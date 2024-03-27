@@ -1,9 +1,6 @@
 <?php
+
 session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: Login.php');
-    exit;
-}
 // Change this to your connection info.
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
@@ -18,7 +15,7 @@ if ( mysqli_connect_errno() ) {
 // Now we check if the data from the login form was submitted, isset() will check if the data exists.
 if ( !isset($_POST['username'], $_POST['password']) ) {
 	// Could not get the data that should have been sent.
-	header('Location: Login.php');
+	header('Location: Connexion.php');
     exit;
 }
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
@@ -45,15 +42,39 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
         } else {
             // Incorrect password
             $_SESSION['error'] = 1;
-            header('Location: Login.php');
+            header('Location: Connexion.php');
             exit;
         }
     } else {
         // Incorrect username
         $_SESSION['error'] = 1;
-        header('Location: Login.php');
+        header('Location: Connexion.php');
         exit;
     }
 	$stmt->close();
 }
+
 ?>
+<!DOCTYPE php>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaliTree - Page de connexion</title>
+    <link rel="stylesheet" href="../../CSS/Connexion.css" type="text/css" media="all">
+</head>
+<body>
+    <header>
+        <h1>PersonaliTree</h1>
+        <p>Connexion</p>
+    </header>
+
+    <form>
+    <label for="login">Nom D'utilisateur</label><br>
+    <input type="text" id="login" name="login"><br>
+    <label for="login">Mot de passe</label><br>
+    <input type="password" id="login" name="login"><br>
+
+
+    </form>
+</body>
