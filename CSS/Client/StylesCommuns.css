@@ -1,0 +1,130 @@
+:root{
+	--couleur-principale: #98B22C;
+	--couleur-secondaire: #0aA79B;
+	--couleur-red: #BE4C50;
+	--couleur-jaune: #E1B428;
+	--couleur-beige: #FBF2D8;
+	--couleur-gris: #222626;
+	
+}
+*{
+	margin: 0;
+}
+body{
+	background-color: var(--couleur-beige)
+}
+.Head{
+	display: flex;
+	height: 10vh;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--couleur-principale);
+	margin-bottom: 20px;
+	width: 100%;
+}
+input[type="text"],input[type="number"],input[type="password"]{
+	background-color: #f2f2f2;
+	border: 2px solid var(--couleur-principale);
+	padding: 8px;
+	border-radius: 15px;
+	width: 20vw;
+	height: 3vh;
+	font-size: 1.4vw;
+}
+input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus{
+	border-color: var(--couleur-secondaire);
+	outline: none;
+}
+select{
+	background-color: #f2f2f2;
+	border: 2px solid var(--couleur-principale);
+	padding: 8px;
+	border-radius: 15px;
+	width: 30vw;
+	font-size: 1vw;
+}
+select:focus{
+	border-color: var(--couleur-secondaire);
+	outline: none;
+}
+textarea{
+	display: flex;
+	justify-content: center;
+	width: 70vw;
+	height: 40vh;
+	border: 2px solid black;
+	border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+	font-size: 1vw;
+}
+form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+input[type='submit']{
+    width: 20vw;
+    padding: 8px;
+    background-color: var(--couleur-principale);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	margin-bottom: 2vh;
+	font-size: 1vw;
+}
+input[type='submit']:hover{
+    background-color: var(--couleur-secondaire);
+}
+h1{
+	font-size: 2.5vw;
+}
+h2{
+	font-size: 2vw;
+	margin-bottom: 1.5vh;
+}
+h3{
+	font-size: 1.5vw;
+}
+ul li{
+	font-size: 1.3vw;
+}
+@media (max-width: 890px) {
+	.Head{
+		margin-top: 120px;
+		margin-left: 0;
+	}
+	select{
+		width: 80%;
+		font-size: 2.5vw;
+	}
+	input[type='submit']{
+		width: 70%;
+		font-size: 3vw;
+	}
+	h3{
+		font-size: 3vw;
+	}
+	h1{
+		font-size: 4.5vw;
+		text-align: center;
+	}
+	h2{
+		font-size: 3.5vw;
+		margin-bottom: 1.5vh;
+	}
+	input[type="text"],input[type="number"],input[type="password"]{
+		background-color: #f2f2f2;
+		width: 60vw;
+		font-size: 3vw;
+	}
+	textarea{
+		width: 70vw;
+		height: 30vh;
+		font-size: 2.5vw;
+	}
+	ul li{
+		font-size: 2vw;
+	}
+}
