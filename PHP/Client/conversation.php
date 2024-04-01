@@ -1,14 +1,6 @@
 <?php
-session_start();
-
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: connexion.php');
-    exit;
-}
-
-// Inclure le fichier de configuration de la base de données
-include 'config.php';
+include './BackEnd/VerificationConnexion.php';
+include './BackEnd/LoginDatabase.php';
 
 // Récupérer les conversations de l'utilisateur à afficher à droite
 $user_id = $_SESSION['id'];
@@ -85,7 +77,7 @@ if ($stmt) {
             <button type="submit">Rechercher</button>
         </form>
     </div>
-    <a href="Client/Deconnexion.php">Se déconnecter</a>
+    <a href="./Deconnexion.php">Se déconnecter</a>
 
 </body>
 </html>

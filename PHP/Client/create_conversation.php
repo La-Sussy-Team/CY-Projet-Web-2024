@@ -1,11 +1,6 @@
 <?php
-session_start();
-
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: connexion.php');
-    exit;
-}
+include './BackEnd/VerificationConnexion.php';
+include './BackEnd/LoginDatabase.php';
 
 // Vérifier si le formulaire a été soumis via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

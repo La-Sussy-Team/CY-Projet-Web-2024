@@ -1,11 +1,6 @@
 <?php
-session_start();
-
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: connexion.php');
-    exit;
-}
+include './BackEnd/VerificationConnexion.php';
+include './BackEnd/LoginDatabase.php';
 
 // Vérifier si l'identifiant de l'utilisateur avec lequel l'utilisateur connecté a une conversation est présent dans la requête GET
 if (!isset($_GET['other_user_id'])) {
@@ -13,9 +8,6 @@ if (!isset($_GET['other_user_id'])) {
     exit;
 }
 
-
-// Inclure le fichier de configuration de la base de données
-include 'config.php';
 
 // Récupérer l'identifiant de l'utilisateur avec lequel l'utilisateur connecté a une conversation à partir de la requête GET
 $other_user_id = $_GET['other_user_id'];
