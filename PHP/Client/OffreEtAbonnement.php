@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="OffreEtAbonnement.css">
+    <link rel="stylesheet" href="../CSS/OffreEtAbonnement.css">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
 </head>
 
