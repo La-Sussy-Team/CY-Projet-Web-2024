@@ -24,7 +24,7 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
 	</div>
     <div class="register-container">
         <div class="step active" id="step1">
-            <img id="profilePic" src="path/to/default/profile/pic.jpg" onclick="document.getElementById('profileImage').click();" style="cursor: pointer;">
+        <img id="profilePic" src="../../Assets/Client/ProfileImage/default.jpg" onclick="document.getElementById('profileImage').click();" style="cursor: pointer; width: 300px; height: 300px;">
             <input type="file" id="profileImage" name="profileImage" accept="image/*" style="display: none;" onchange="loadFile(event)">
             <label for="username"><h3>Nom d'utilisateur :</h3></label>
             <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required autocomplete="username" pattern="[A-Za-z0-9]+">
@@ -39,8 +39,8 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
             }
             ?>
             <button class="next">Suivant</button>
-            <a href="Connexion.php">Déjà inscrit ? <b>Connectez-vous!</b></a>>
-            </div>
+            <a href="Connexion.php" class="alien">Déjà inscrit ? <b>Connectez-vous!</b></a>>
+        </div>
         <div class="step" id="step2">
             <label for="username"><h3>Adresse email :</h3></label>
             <input type="text" name="email" id="email" placeholder="bob.madison@gmail.com" required autocomplete="username" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
