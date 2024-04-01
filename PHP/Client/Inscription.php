@@ -1,52 +1,6 @@
 <?php
 session_start();
-
 $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Côte d'Ivoire", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia (formerly Macedonia)", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-if (!(!isset($_POST['username'], $_POST['password'], $_POST['passwordConfirmation']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']))){
-    if (!preg_match("/^[A-Za-z0-9]+$/", $_POST['username'])) {
-        $_SESSION['error'] = 1; //erreur caractères spéciaux
-        header('Location: Inscription.php');
-        exit();
-    }
-    include 'BackEnd/LoginDatabase.php';
-    if ($_POST['password'] !== $_POST['passwordConfirmation']) {
-        $_SESSION['error'] = 3; //erreur mots de passe différents
-            header('Location: Inscription.php');
-            exit();
-    }
-    if ($stmt = $con->prepare('SELECT id, password FROM login WHERE username = ?')) {
-        $stmt->bind_param('s', $_POST['username']);
-        $stmt->execute();
-        $stmt->store_result();
-        if ($stmt->num_rows > 0) {
-            $_SESSION['error'] = 2; //erreur nom d'utilisateur déjà utilisé
-            header('Location: Inscription.php');
-            exit();
-        } else {
-            if ($stmt = $con->prepare('INSERT INTO login (username, password) VALUES (?, ?)')) {
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $stmt->bind_param('ss', $_POST['username'], $password);
-                $stmt->execute();
-                session_regenerate_id();
-                $_SESSION['loggedin'] = TRUE;
-                $_SESSION['name'] = $_POST['username'];
-                $_SESSION['id'] = $id;
-                $_SESSION['username'] = $_POST['username'];
-                header('Location: AccueilProfils.php');
-            } else {
-                $_SESSION['error'] = 4; //erreur SQL
-                header('Location: Inscription.php');
-                exit();
-            }
-        }
-        $stmt->close();
-    } else {
-        $_SESSION['error'] = 4; //erreur SQL
-        header('Location: Inscription.php');
-        exit();
-    }
-    $con->close();
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -150,7 +104,13 @@ h2{
                     data.prenom = $("#prenom").val();
                     data.nom = $("#nom").val();
                     data.sexe = $("#sexe").val();
-                    isValidStep = true;
+                    isValidStep = validateStep3(data);
+                    break;
+                case 4:
+                    data.pays = $("#pays").val();
+                    data.ville = $("#ville").val();
+                    data.adresse = $("#adresse").val();
+                    isValidStep = validateStep4(data);
                     break;
             }
             if (isValidStep) {
@@ -192,6 +152,36 @@ h2{
             }
             return true;
         }
+        function validateStep3(data) {
+            var prenom = data.prenom;
+            var nom = data.nom;
+            var sexe = data.sexe;
+            if (prenom == "" || prenom.length > 20) {
+                return false;
+            }
+            if (nom == "" || nom.length > 30) {
+                return false;
+            }
+            if (sexe == "") {
+                return false;
+            }
+            return true;
+        }
+        function validateStep4(data) {
+            var pays = data.pays;
+            var ville = data.ville;
+            var adresse = data.adresse;
+            if (pays == "") {
+                return false;
+            }
+            if (ville == "" || ville.length > 30) {
+                return false;
+            }
+            if (adresse == "" || adresse.length > 60) {
+                return false;
+            }
+            return true;
+        }
         $("#username").blur(function() {
             var input=$(this);
             var re = /^[A-Za-z0-9]+$/;
@@ -228,6 +218,17 @@ h2{
                 $("#email").after("<span class='error'>Adresse email invalide</span>");
             }
         });
+        $("#tel").blur(function() {
+            var input=$(this);
+            var tel=input.val();
+            $("#tel").next(".error").remove();
+            if(tel.length != 10){
+                $("#tel").removeClass("valid").addClass("invalid");
+                $("#tel").after("<span class='error'>Le numéro de téléphone doit contenir 10 chiffres</span>");
+            } else {
+                $("#tel").removeClass("invalid").addClass("valid");
+            }
+        });
         $("#password").blur(function() {
             var input=$(this);
             var password=input.val();
@@ -251,32 +252,94 @@ h2{
                 $("#passwordConfirmation").removeClass("invalid").addClass("valid");
             }
         });
-        $("#send").click(function() {
-            $.ajax({
-                type: "POST",
-                url: "Inscription.php",
-                data: data,
-                success: function(response) {
-                    // Handle the response...
-                }
-            });
+        $("#prenom").blur(function() {
+            var input=$(this);
+            var prenom=input.val();
+            $("#prenom").next(".error").remove();
+            if(prenom.length > 20){
+                $("#prenom").removeClass("valid").addClass("invalid");
+                $("#prenom").after("<span class='error'>Le prénom ne doit pas dépasser 20 caractères</span>");
+            } else {
+                $("#prenom").removeClass("invalid").addClass("valid");
+            }
+        });
+        $("#nom").blur(function() {
+            var input=$(this);
+            var nom=input.val();
+            $("#nom").next(".error").remove();
+            if(nom.length > 30){
+                $("#nom").removeClass("valid").addClass("invalid");
+                $("#nom").after("<span class='error'>Le nom ne doit pas dépasser 30 caractères</span>");
+            } else {
+                $("#nom").removeClass("invalid").addClass("valid");
+            }
+        });
+        $("#ville").blur(function() {
+            var input=$(this);
+            var ville=input.val();
+            $("#ville").next(".error").remove();
+            if(ville.length > 30){
+                $("#ville").removeClass("valid").addClass("invalid");
+                $("#ville").after("<span class='error'>La ville ne doit pas dépasser 30 caractères</span>");
+            } else {
+                $("#ville").removeClass("invalid").addClass("valid");
+            }
+        });
+        $("#adresse").blur(function() {
+            var input=$(this);
+            var adresse=input.val();
+            $("#adresse").next(".error").remove();
+            if(adresse.length > 60){
+                $("#adresse").removeClass("valid").addClass("invalid");
+                $("#adresse").after("<span class='error'>L'adresse ne doit pas dépasser 60 caractères</span>");
+            } else {
+                $("#adresse").removeClass("invalid").addClass("valid");
+            }
+        });
+        $(".send").click(function() {
+            if ($("#username").hasClass("invalid") || $("#email").hasClass("invalid") || $("#tel").hasClass("invalid") || $("#password").hasClass("invalid") || $("#passwordConfirmation").hasClass("invalid") || $("#prenom").hasClass("invalid") || $("#nom").hasClass("invalid") || $("#ville").hasClass("invalid") || $("#adresse").hasClass("invalid")) {
+                alert("Veuillez remplir les champs correctement.");
+                return;
+            } else {
+                console.log("sending data");
+                var formData = new FormData();
+                var fileField = document.querySelector('input[type="file"]');
+                formData.append('username', document.getElementById('username').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('tel', document.getElementById('tel').value);
+                formData.append('password', document.getElementById('password').value);
+                formData.append('passwordConfirmation', document.getElementById('passwordConfirmation').value);
+                formData.append('prenom', document.getElementById('prenom').value);
+                formData.append('nom', document.getElementById('nom').value);
+                formData.append('sexe', document.getElementById('sexe').value);
+                formData.append('pays', document.getElementById('pays').value);
+                formData.append('ville', document.getElementById('ville').value);
+                formData.append('adresse', document.getElementById('adresse').value);
+                formData.append('profileImage', fileField.files[0]);
+                fetch('./BackEnd/ValidationInscription.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        alert(data.success);
+                        window.location.href = './index.php';
+                    }
+                })
+            }
         });
     });
     function loadFile(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('profilePic');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-            // Créer un FormData pour stocker l'image
-            var formData = new FormData();
-            formData.append('profileImage', event.target.files[0]);
-            // Envoyer une requête AJAX au fichier ProfileImageUpload.php
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', './BackEnd/ProfileImageUpload.php', true);
-            xhr.send(formData);
-        }
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('profilePic');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
     </script>
 </head>
 <body>
@@ -347,7 +410,7 @@ h2{
             <label for="adresse">Adresse :</label>
             <input type="text" name="adresse" id="adresse" required>
             <button class="prev">Précédent</button>
-            <button class="send">S'inscrire</button>
+            <button class="send" id="send">S'inscrire</button>
         </div>
     </div>
 </body>
