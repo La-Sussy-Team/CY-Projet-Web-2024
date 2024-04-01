@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -69,13 +72,15 @@
         }
     </style>
 </head>
+<?php
+include "./Client/Header.php";
+?>
 <body>
     <header>
         <h1>PersonaliTree</h1>
         <p>Rencontrez des personnes partageant votre affinité naturelle à travers une plante ou un arbre.</p>
         <button data-connexion-target="#login_page">Connexion</button>
     </header>
-
     <div class="container">
         <h2>Bienvenue sur PersonaliTree</h2>
         <p>PersonaliTree vous permet de rencontrer des personnes qui partagent votre amour pour la nature. Que vous soyez passionné par les arbres majestueux, les fleurs colorées ou les plantes exotiques, notre plateforme vous mettra en contact avec des personnes partageant vos intérêts.</p>
@@ -95,9 +100,7 @@
             <a href="Inscription.php">Pas encore inscrit ? <b>Inscrivez-vous gratuitement !</b></a>
         </div>
     </div>
-
     <div id="overlay" class="overlay"></div>
-
     <footer>
         <p>&copy; 2024 PersonaliTree. Tous droits réservés.</p>
     </footer>
