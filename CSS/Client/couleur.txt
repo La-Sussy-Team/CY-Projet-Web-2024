@@ -1,0 +1,7 @@
+rose : FF516D
+marron foncé : 813A26
+marron clair : d39582
+vert clair : 92D66B
+vert foncé : 6CA546
+blanc : FEFFFB
+beige : FDE4DB
