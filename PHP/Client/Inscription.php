@@ -14,6 +14,14 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
     <script src="../../JS/Client/Inscription.js"></script>
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
+	<div class="ilotValider" id="ilotValider">
+		<h2>Votre inscription a bien été validé !</h2>
+		<div class="validation-animation" id="validationAnimation">
+			<img src="../../Assets/Animation/validation.gif">
+		</div>
+		<h2>Vous pouvez à présent vous connecter</h2>
+	</div>
     <div class="register-container">
         <div class="step active" id="step1">
             <img id="profilePic" src="path/to/default/profile/pic.jpg" onclick="document.getElementById('profileImage').click();" style="cursor: pointer;">

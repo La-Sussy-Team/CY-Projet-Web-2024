@@ -51,10 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['em
             $stmt->bind_param('isissssss', $last_id, $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['ville'], $_POST['adresse'], $_POST['pays']);
             $stmt->execute();
             if($_FILES['profileImage']['error'] == 0) {
-                // Générer un nom unique pour le fichier pour éviter les conflits de noms
                 $imageName = uniqid() . '-' . $_FILES['profileImage']['name'];
                 $destination = __DIR__ . '/../../../Assets/Client/ProfileImage/' . $imageName;
-                // Déplacez le fichier uploadé vers le répertoire des images
                 if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $destination)) {
                     $stmt = $con->prepare("UPDATE infopersos SET imgpath = ? WHERE user_id = ?");
                     $stmt->bind_param('si', $imageName, $last_id);

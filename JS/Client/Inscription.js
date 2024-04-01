@@ -33,7 +33,7 @@ $(document).ready(function() {
             currentStep++;
             $("#step" + currentStep).addClass("active");
         } else {
-            alert("Please fill in the required fields.");
+            alert("Remplissez les champs correctement avant de passer à l'étape suivante");
         }
     });
     $(".prev").click(function() {
@@ -239,13 +239,25 @@ $(document).ready(function() {
             .then(data => {
                 if (data.error) {
                     alert(data.error);
+                    window.location.href = './inscription.php';
                 } else {
-                    alert(data.success);
-                    window.location.href = './index.php';
+                    AnimationValidation();
                 }
             })
         }
     });
+    function AnimationValidation() {
+        const overlay = document.getElementById("overlay");
+        const validationAnimation = document.getElementById("ilotValider");
+        overlay.style.display = "block";
+        validationAnimation.style.display = "block";
+        validationAnimation.classList.remove("checkmark");
+        void validationAnimation.offsetWidth;
+        validationAnimation.classList.add("checkmark");
+        setTimeout(() => {
+            window.location.href = "./../Accueil.html";
+        }, 9000); 
+    }
 });
 function loadFile(event) {
     var reader = new FileReader();

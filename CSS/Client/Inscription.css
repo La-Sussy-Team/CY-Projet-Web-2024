@@ -40,6 +40,34 @@
     transition: transform 0.5s ease-in-out;
     transform: translateX(100%);
 }
+.validation-animation {
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    display: none;
+}
+.ilotValider{
+    z-index: 3;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 45px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+
+}
 .step.active {
     display: block;
     transform: translateX(0);
