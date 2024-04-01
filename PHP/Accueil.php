@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Client/LoginContainer.css">
-    <link rel="stylesheet" href="../CSS/Client/PageAcceuil.css">
+    <link rel="stylesheet" href="../CSS/Client/PageAccueil.css">
     <link rel="stylesheet" href="../CSS/Client/StylesCommuns.css">
     <script defer src="../JS/Client/Login_Box.js"></script>
     <title>PersonaliTree - Rencontre par affinité naturelle</title>

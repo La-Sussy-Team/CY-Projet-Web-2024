@@ -1,0 +1,136 @@
+.body {
+  color: #FEFFFB;
+}
+
+.container {
+  color: #FEFFFB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Pour centrer verticalement */
+}
+
+.box1{
+  width: 750px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #FEFFFB;
+  box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.box1:hover {
+  transform: translateY(-10px);
+}
+
+.int{
+  background-color: #FEFFFB;
+  margin: 0;
+  padding: 10px;
+}
+
+.int_h2{
+  background-color: #FEFFFB;
+  margin: 0;
+  padding: 0;
+  color: #813A26;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.int_h1{
+  background-color: #FEFFFB;
+  margin: 0;
+  padding: 0;
+  color: #813A26;
+}
+
+.separator{
+  background-color: #FF516D;
+  color: #FF516D;
+  size: 2px;
+  height: 2px;
+  margin: 2px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.int_p{
+  background-color: #FEFFFB;
+  margin-top: 20px;
+  padding: 0;
+  color: #813A26;
+}
+
+.int_a{
+  background-color: #FEFFFB;
+  margin-top: 50px;
+  padding: 0;
+  text-align: center;
+}
+
+.button{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: 1px solid #FF516D;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 25px;
+  color: #FEFFFB;
+  background-color: #FF516D;
+  z-index: 1;
+  text-decoration: none;
+  box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+  font-family: Montserrat, sans-serif; 
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #6CA546;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+ 
+.button:hover {
+  color: #FEFFFB;
+  border: 1px solid #6CA546;
+}
+ 
+.button:hover:before {
+  top: -35%;
+  background-color: #6CA546;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+ 
+.button:hover:after {
+  top: -45%;
+  background-color: #6CA546;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+p{
+  font-family: Montserrat, sans-serif; 
+  font-size: 20px;
+}
+
+h1{
+  font-family: Montserrat, sans-serif;  
+  font-size: 30px; 
+}
+
+h2{
+  font-family: Montserrat, sans-serif;   
+}

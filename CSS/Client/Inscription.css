@@ -113,7 +113,11 @@ h2{
     }
 }
 
+<<<<<<< HEAD
 #step1, #step2, #step3,#step4, .modifie {
+=======
+#step1, #step2, #step3,#step4 {
+>>>>>>> d5dec58ce51c4ad0a44297793cecfefb2b6cfcb4
     background-color: var(--couleur-beige);
     padding: 20px;
     border-radius: 10px;
@@ -131,7 +135,11 @@ h2{
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 #username, #email, #password, #password2, #nom, #prenom, #adresse, #ville, #codePostal, #tel, #sexe, #pays, #currentPassword, #passwordConfirmation {
+=======
+#username, #email, #password, #password2, #nom, #prenom, #adresse, #ville, #codePostal, #tel {
+>>>>>>> d5dec58ce51c4ad0a44297793cecfefb2b6cfcb4
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -225,4 +233,8 @@ a:hover {
 
 .register-container{
     background-color: #92D66B;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d5dec58ce51c4ad0a44297793cecfefb2b6cfcb4
