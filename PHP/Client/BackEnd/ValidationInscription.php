@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['em
         if ($stmt = $con->prepare('INSERT INTO infopersos (user_id, email, phone, prenom, nom, sexe, ville, adresse, pays) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')) {
             $stmt->bind_param('isissssss', $last_id, $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['ville'], $_POST['adresse'], $_POST['pays']);
             $stmt->execute();
-            if($_FILES['profileImage']['error'] == 0) {
+            if(isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
                 $imageName = uniqid() . '-' . $_FILES['profileImage']['name'];
                 $destination = __DIR__ . '/../../../Assets/Client/ProfileImage/' . $imageName;
                 if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $destination)) {
@@ -67,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['em
                     echo json_encode($response);
                     exit();
                 }
+            } else {
+                $response['success'] = 'Inscription réussie';
+                echo json_encode($response);
+                exit();
             }
         } else {
             $response['error'] = 'Erreur SQL';
