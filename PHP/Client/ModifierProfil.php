@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "./BackEnd/VerificationConnexion.php";
 include './BackEnd/LoginDatabase.php';
 if ($stmt = $con->prepare('SELECT * FROM login WHERE username = ?')) {
     $stmt->bind_param('s', $_SESSION['username']);
@@ -25,6 +25,9 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Client/Modification.js"></script>
 </head>
+<?php
+include "Header.php";
+?>
 <body>
     <img id="profilePic" src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>" onclick="document.getElementById('profileImage').click();" style="cursor: pointer;">
     <input type="hidden" id="currentProfileImage" name="currentProfileImage" value="<?php echo $user['imgpath']; ?>">
