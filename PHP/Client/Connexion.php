@@ -6,19 +6,18 @@ if (isset($_SESSION['loggedin'])) {
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
         include 'BackEnd/LoginDatabase.php';
-        if ($stmt = $con->prepare('SELECT id, password FROM login WHERE username = ?')) {
+        if ($stmt = $con->prepare('SELECT password, isAdmin, isSub FROM login WHERE username = ?')) {
             $stmt->bind_param('s', $_POST['username']);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($id, $password);
+                $stmt->bind_result($password, $isAdmin, $isSub);
                 $stmt->fetch();
                 if (password_verify($_POST['password'], $password)) {
                     session_regenerate_id();
-                    $_SESSION['loggedin'] = TRUE;
-                    $_SESSION['name'] = $_POST['username'];
-                    $_SESSION['id'] = $id;
                     $_SESSION['username'] = $_POST['username'];
+                    $_SESSION['isAdmin'] = $isAdmin;
+                    $_SESSION['isSub'] = $isSub;
                     header('Location: AccueilProfils.php');
                     exit();
                 } else {
