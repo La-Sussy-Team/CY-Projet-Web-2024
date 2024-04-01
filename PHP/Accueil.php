@@ -7,6 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Client/LoginContainer.css">
+    <link rel="stylesheet" href="../CSS/Client/PageAccueil.css">
     <link rel="stylesheet" href="../CSS/Client/StylesCommuns.css">
     <script defer src="../JS/Client/Login_Box.js"></script>
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
@@ -97,33 +98,66 @@ session_start();
     </div>
 </div>
 <body>
-    <header>
-        <h1>PersonaliTree</h1>
-        <p>Rencontrez des personnes partageant votre affinité naturelle à travers une plante ou un arbre.</p>
-        <button data-connexion-target="#login_page">Connexion</button>
-    </header>
-    <div class="container">
-        <h2>Bienvenue sur PersonaliTree</h2>
-        <p>PersonaliTree vous permet de rencontrer des personnes qui partagent votre amour pour la nature. Que vous soyez passionné par les arbres majestueux, les fleurs colorées ou les plantes exotiques, notre plateforme vous mettra en contact avec des personnes partageant vos intérêts.</p>
-        <p>Pour accéder aux profils et commencer à faire des rencontres, veuillez vous connecter ou vous inscrire.</p>
-        <p>Rejoignez-nous dès maintenant et laissez la nature vous guider vers de nouvelles relations enrichissantes !</p>
-    </div>
-    <div class="login_page" id="login_page">
-        <div class="login-container">
-            <h2>Connexion</h2> <button data-close-button class="close">&times;</button>
-            <form method="POST" action="Client/Connexion.php">
-                <label for="username"><h3>Nom d'utilisateur :</h3> </label>
-                <input type="text" id="username" name="username" required autocomplete="username"><br>
-                <label for="password"><h3>Mot de passe :</h3></label>
-                <input type="password" id="password" name="password" required autocomplete="current-password"><br>
-                <input type="submit" value="Connexion">
-            </form>
-            <a href="Inscription.php">Pas encore inscrit ? <b>Inscrivez-vous gratuitement !</b></a>
+    <div class="bar">
+            <div class="bar_1">
+                <a href="PageAcceuil.html"><img class="logo1" src="../Assets/Logo/Logo.jpg" alt=""></a>
+                <h1 class="ff">PersonnalyTree</h1>
+            </div>
+            <div class="bar_2">
+                <ul class="navbar">
+                    <a class="button_ab" href="">S'abonner</a>
+                </ul>
+            </div>
+            <div class="bar_3">
+                <a class="button" href="PageAcceuil.html">Connexion</a>
+                <a class="button" href="PageAcceuil.html">Inscription</a>
+            </div>
         </div>
-    </div>
-    <div id="overlay" class="overlay"></div>
-    <footer>
-        <p>&copy; 2024 PersonaliTree. Tous droits réservés.</p>
-    </footer>
+        
+        <div class="middle1">
+            <img class="img1" src="../Assets/PageAcceuil/img1.png" alt="">
+            <div class="titredivmid">
+                <h2 class="titre-mid">PersonnaliTree : trouvez l'amour sur votre personnalité</h2>
+                <h2 class="titre-mid"> à l'aide des plantes</h2>
+            </div>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="../Assets/PageAcceuil/lamour.png" alt="Trouver l'amour avec votre personnalité">
+                    <h3>Trouver l'amour avec votre personnalité</h3>
+                </div>
+                <div class="image-container">
+                    <img src="../Assets/PageAcceuil/local.png" alt="Trouver l'amour près de chez vous">
+                    <h3>Trouver l'amour près de chez vous</h3>
+                </div>
+            </div>
+            <div class="dessousfleur">
+                <div class="image-grid">
+                    <div class="image-container">
+                        <img src="../Assets/PageAcceuil/iris.png" alt="Image 1">
+                        <h3>Personnalité Aventureuse</h3>
+                        <p>Rencontrez des personnes qui aiment l'aventure et trouvez la plante qui vous accompagnera dans vos explorations.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="../Assets/PageAcceuil/hibiscus.png" alt="Image 2">
+                        <h3>Personnalité Créative</h3>
+                        <p>Rencontrez des personnes créatives et trouvez la plante qui inspirera votre imagination.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="../Assets/PageAcceuil/passiflore.png" alt="Image 3">
+                        <h3>Personnalité Calme</h3>
+                        <p>Rencontrez des personnes calmes et trouvez la plante qui apportera sérénité dans votre vie.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="moderation-section">
+                <div class="text-container">
+                    <h3 class="titremod">Modération et Anti-Harcèlement</h3>
+                    <p class="textemod">Nous prenons très au sérieux la sécurité de nos utilisateurs. Notre équipe de modération travaille sans relâche pour prévenir et éliminer tout comportement inapproprié ou harcelant. Nous nous engageons à créer un environnement sûr et accueillant pour tous.</p>
+                </div>
+                <div class="image-container2">
+                    <img src="../Assets/PageAcceuil/moderation.png" alt="Modération et Anti-Harcèlement">
+                </div>
+            </div>
+        </div>
 </body>
 </html>
