@@ -68,6 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['em
                     exit();
                 }
             } else {
+                $imageName = 'default.jpg';
+                $stmt = $con->prepare("UPDATE infopersos SET imgpath = ? WHERE user_id = ?");
+                $stmt->bind_param('si', $imageName, $last_id);
+                $stmt->execute();
+                $stmt->close();
+                $con->close();
                 $response['success'] = 'Inscription réussie';
                 echo json_encode($response);
                 exit();
