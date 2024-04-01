@@ -255,7 +255,7 @@ $(document).ready(function() {
         void validationAnimation.offsetWidth;
         validationAnimation.classList.add("checkmark");
         setTimeout(() => {
-            window.location.href = "./../Accueil.html";
+            window.location.href = "./../Accueil.php";
         }, 9000); 
     }
 });
