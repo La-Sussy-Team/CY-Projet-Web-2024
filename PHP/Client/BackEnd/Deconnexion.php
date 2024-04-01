@@ -2,6 +2,6 @@
 session_start();
 unset($_SESSION['username']);
 session_destroy();
-header('Location: Connexion.php');
+header('Location: ../../Accueil.html');
 exit;
 ?>
