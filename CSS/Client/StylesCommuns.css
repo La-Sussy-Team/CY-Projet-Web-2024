@@ -1,10 +1,13 @@
 :root{
-	--couleur-principale: #98B22C;
-	--couleur-secondaire: #0aA79B;
-	--couleur-red: #BE4C50;
+	--couleur-principale: #92D66B;
+	--couleur-secondaire: #6CA546;
+	--couleur-red: #FF516D;
 	--couleur-jaune: #E1B428;
-	--couleur-beige: #FBF2D8;
+	--couleur-beige: #FEFFFB;
 	--couleur-gris: #222626;
+	--marron-fonce: #813A26;
+    	--marron-clair: #d39582;
+	--beige: #FDE4DB;
 	
 }
 *{
