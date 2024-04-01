@@ -13,10 +13,10 @@
     <div class="bar_3">
         <?php
         if (isset($_SESSION['username'])) {
-            if (isset($_SESSION) && $_SESSION['isSub'] == 1) {
-                echo '<a href="./AccueilAdmin.php" style="color: white; text-decoration: none; display: flex; align-items: center;">Gestion Administrateur<img class="logo65" src="../../Assets/Logo/4192781.png"></a>';
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+                echo '<a href="./../Admin/AccueilAdmin.php" style="color: white; text-decoration: none; display: flex; align-items: center;">Gestion Administrateur<img class="logo65" src="../../Assets/Logo/4192781.png"></a>';
             }
-            echo '<a href="./MonProfil.php" style="color: white; text-decoration: none; display: flex; align-items: center;">Mon Profil<img class="logo65" src="../../Assets/Logo/login.png"></a>';
+            echo '<a href="./MonProfil.php" style="color: white; text-decoration: none; display: flex;  margin-left: 15px; align-items: center;">Mon Profil<img class="logo65" src="../../Assets/Logo/login.png"></a>';
             echo '<a href="./BackEnd/Deconnexion.php" style="color: white; text-decoration: none; display: flex; margin-left: 15px; align-items: center;">Déconnexion<img class="logo65" src="../../Assets/Logo/logout.jpg"></a>';
         } else {
             echo '<a href="./Inscription.php" style="color: white; text-decoration: none; display: flex; align-items: center;">Inscription<img class="logo65" src="../../Assets/Logo/register.jpg"></a>';
