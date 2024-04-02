@@ -1,4 +1,6 @@
 <?php
+
+// Récupère les logins de l'utilisateur
 $servername = "localhost";
 $username = "votre_nom_utilisateur";
 $password = "votre_mot_de_passe";
@@ -19,8 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupérer la valeur de l'abonnement
         $nouvel_abonnement = $_POST['abonnement'];
 
+        // Vous devez remplacer 'ID_UTILISATEUR' par l'identifiant de l'utilisateur connecté ou qui souhaite s'abonner
+        $id_utilisateur = 1; // Exemple d'identifiant d'utilisateur
+
         // Mettre à jour le statut d'abonnement de l'utilisateur dans la base de données
-        $sql = "UPDATE login SET statut_abonnement = '$nouvel_abonnement' WHERE id = <ID_UTILISATEUR>";
+        $sql = "UPDATE login SET statut_abonnement = '$nouvel_abonnement' WHERE id = $id_utilisateur";
         
         if ($conn->query($sql) === TRUE) {
             echo "Statut d'abonnement mis à jour avec succès.";
@@ -37,4 +42,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Fermer la connexion
 $conn->close();
 ?>
+
 
