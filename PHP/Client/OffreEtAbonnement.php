@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Client/OffreEtAbonnement.css">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
+    <script>
+        function confirmerAbonnement() {
+            if (confirm("Êtes-vous sûr de vouloir vous abonner ?")) {
+                alert("Vous êtes maintenant abonné !");
+            } else {
+                alert("Vous n'êtes pas abonné !");
+            }
+        }
+    </script>
 </head>
 
 <body>
-    
+
     <div class="container">
         <div class="box1">
             <div class="int">
@@ -28,7 +37,7 @@
                     <p>+ Bloquer des utilisateurs</p>
                 </div>
                 <div class="int_a">
-                    <a class="button" href="">S'abonner</a>
+                    <a class="button" href="#" onclick="confirmerAbonnement()">S'abonner</a>
                 </div>
             </div>
         </div>
@@ -37,3 +46,4 @@
 </body>
 
 </html>
+
