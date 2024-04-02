@@ -1,0 +1,33 @@
+.filter-bar{
+    width: 100%;
+    margin:0 auto;
+    background-color: blue;
+    position: sticky;
+    top:0px;
+    display: none;
+   
+}
+
+.filter-bar.active{
+    display: block;
+    
+}
+
+
+
+input{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.unroll-button{
+    width: 5%;
+    background-color: blueviolet;
+    text-align: center;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    margin:auto;
+    cursor: pointer;
+}
+
+.unroll-button:hover .filter-bar{display: block;}
