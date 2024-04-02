@@ -1,13 +1,15 @@
 .body {
-  color: #FEFFFB;
+  margin: 0;
 }
 
 .container {
-  color: #FEFFFB;
+  background-color: #6CA546;
   display: flex;
+  margin: 0;
+  padding: 0;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Pour centrer verticalement */
+  height: 100vh; 
 }
 
 .box1{
@@ -15,7 +17,10 @@
   height: 600px;
   display: flex;
   flex-direction: column;
+  border: 1px solid #813A26;
   border-radius: 20px;
+  margin: 0;
+  padding: 0;
   background-color: #FEFFFB;
   box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -27,8 +32,7 @@
 
 .int{
   background-color: #FEFFFB;
-  margin: 0;
-  padding: 10px;
+  margin: 10px;
 }
 
 .int_h2{
@@ -76,7 +80,7 @@
   margin-top: 20px;
   padding: 12px 24px;
   border: 1px solid #FF516D;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 0.2s ease-in;
   position: relative;
   overflow: hidden;
@@ -132,5 +136,6 @@ h1{
 }
 
 h2{
-  font-family: Montserrat, sans-serif;   
+  font-family: Montserrat, sans-serif; 
+  font-size: 20px;  
 }
