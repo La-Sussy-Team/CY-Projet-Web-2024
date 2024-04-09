@@ -12,8 +12,8 @@
 }
 
 body{
+    background-color: #92D66B;
     font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    background-color: #6CA546;
 }
 
 .master{
@@ -37,8 +37,6 @@ body{
     padding: 1vw;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    background-color: #FEFFFB;
 }
 .suppr-container {
     display: flex;
@@ -222,7 +220,3 @@ a:hover {
     color:rgb(0, 0, 0);
     text-decoration: underline;
     }
-
-.register-container{
-    background-color: #92D66B;
-}
