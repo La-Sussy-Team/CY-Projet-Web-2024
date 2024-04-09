@@ -7,6 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
+    <link rel="stylesheet" href="../../CSS/Client/Inscription.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/Client/Menu_Site.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/Client/RechercheProfils.css">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
@@ -33,6 +34,7 @@ session_start();
         }
         p {
             line-height: 1.6;
+            text-align: center;
         }
         footer {
             background-color: #333;
@@ -56,20 +58,21 @@ include "Header.php";
     <div class="filter-bar" id="filter-bar">
         <div class="deroulant">
         <form method="post">
-            <table>
-                <tr>
-                    <th><input type="text" class="filter-searchbar" placeholder="Nom" name="search-nom"><br></th>
-                    <th><input type="checkbox" class="checkbox-sex" name="sex1"> <label for="sex1">Homme</label></th>
-                </tr>
-                <tr>
-                    <th><input type="text" class="filter-searchbar" placeholder="Ville" name="search-ville"><br></th>
-                    <th><input type="checkbox" class="checkbox-sex" name="sex2"> <label for="sex2">Femme</label></th>
-                </tr>
-                <tr>
-                    <th><input type="text" class="filter-searchbar" placeholder="Pays" name="search-pays"></th>
-                    <th><input type="checkbox" class="checkbox-sex" name="sex3"> <label for="sex3">Autre</label></th>
-                </tr>
-            </table>
+            <div class="info-general">
+                    <input type="text" class="filter-searchbar" placeholder="Nom" name="search-nom">
+                    <input type="text" class="filter-searchbar" placeholder="Ville" name="search-ville">
+                    <input type="text" class="filter-searchbar" placeholder="Pays" name="search-pays">
+            </div>
+            <div class="sex">
+                    <input type="checkbox" class="checkbox-sex" name="sex1"> <label for="sex1">Homme</label>
+                    <input type="checkbox" class="checkbox-sex" name="sex2"> <label for="sex2">Femme</label>
+                    <input type="checkbox" class="checkbox-sex" name="sex3"> <label for="sex3">Autre</label>
+            </div>
+            <div class="age">
+                    <p>Age</p>
+                    <input type="text" placeholder="Minimum">
+                    <input type="text" placeholder="Maximum">
+            </div>
             <button name="submit">Rechercher</button>
         </form>
     </div>
@@ -78,10 +81,11 @@ include "Header.php";
         <script>
             function menu(){
             const menu = document.getElementById("filter-bar");
-            if(menu == null){
-                console.log("oops");
+            if(menu.classList.contains("active")==false){
+                menu.classList.add("active");
+            } else {
+                menu.classList.remove("active");
             }
-            menu.classList.add("active");
             }
         </script>
         <p>+</p>
