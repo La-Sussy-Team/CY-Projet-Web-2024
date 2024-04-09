@@ -1,6 +1,7 @@
 <?php
 include "./BackEnd/VerificationConnexionAdmin.php";
 include "../Client/BackEnd/LoginDatabase.php";
+include "Header.php";
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
     if(isset($_GET['id'])){
         $id = $_GET['id'];
@@ -27,6 +28,5 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     <div class="flexer">
         
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 </html>

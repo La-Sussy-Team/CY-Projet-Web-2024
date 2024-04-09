@@ -1,6 +1,6 @@
 <?php
 include "./BackEnd/VerificationConnexionAdmin.php";
-//include "MenuAdmin.php";
+include "Header.php";
 include "../Client/BackEnd/LoginDatabase.php";
 if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id')){
     $stmt -> execute();
@@ -14,7 +14,6 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <title>Personalytree - Administration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <link rel="stylesheet" href="../../CSS/Admin/StylesCommuns.css">
     <link rel="stylesheet" href="../../CSS/Admin/ListeUtilisateurs.css">

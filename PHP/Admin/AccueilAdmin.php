@@ -1,6 +1,7 @@
 <?php
 include "./BackEnd/VerificationConnexionAdmin.php";
-include "MenuAdmin.php";
+include "Header.php";
+include "../Client/BackEnd/LoginDatabase.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,8 +13,41 @@ include "MenuAdmin.php";
 </head>
 <body>
     <div style="display:flex; flex-direction:column; text-align:center; position:relative; top: 8vh;">
-        <h1>Bienvenue <?php echo $_SESSION['username']." !" ?></h1>
-        <h3>Choisissez une catégorie à modifier</h3>
+        <h1>Bienvenue dans le paneau de gestion administrateur</h1>
+        <h3>Choisissez une catégorie dans le menu ci-dessus</h3>
+        <h2>Statistiques actuelles du site</h2>
+        <p>Nombre d'utilisateurs inscrits : <?php
+        if ($stmt = $con->prepare('SELECT COUNT(*) FROM login')){
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            $users = $result -> fetch_all(MYSQLI_ASSOC);
+            echo $users[0]['COUNT(*)'];
+        }
+        ?></p>
+        <p>Nombre d'utilisateurs abonnés : <?php
+        if ($stmt = $con->prepare('SELECT COUNT(*) FROM login WHERE isSub = 1')){
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            $users = $result -> fetch_all(MYSQLI_ASSOC);
+            echo $users[0]['COUNT(*)'];
+        }
+        ?></p>
+        <p>Nombre d'utilisateurs administrateurs : <?php
+        if ($stmt = $con->prepare('SELECT COUNT(*) FROM login WHERE isAdmin = 1')){
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            $users = $result -> fetch_all(MYSQLI_ASSOC);
+            echo $users[0]['COUNT(*)'];
+        }
+        ?></p>
+        <p>Nombre d'utilisateurs bannis : <?php
+        if ($stmt = $con->prepare('SELECT COUNT(*) FROM login WHERE isBanned = 1')){
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            $users = $result -> fetch_all(MYSQLI_ASSOC);
+            echo $users[0]['COUNT(*)'];
+        }
+        ?></p>
     </div>
 </body>
 </html>

@@ -15,9 +15,9 @@ session_start();
     <header>
         <a href="./Accueil.php"><img class="logo" src="../Assets/Logo/Logo_Fullscreen.png" alt=""></a>
         <ul class ="inter">
-            <li><a href="#">Accueil</a></li>
+            <li><a href="./Accueil.php">Accueil</a></li>
             <li><a href="#">Découverte de Profils</a></li>
-            <li><a href="#">Recherche de Profils</a></li>
+            <li><a href="./Client/RechercheProfils.php">Recherche de Profils</a></li>
             <?php
             echo '<div class="inter">';
             if (isset($_SESSION['username'])) {
