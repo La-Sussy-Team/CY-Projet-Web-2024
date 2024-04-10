@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Client/OffreEtAbonnement.css">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script>
         function confirmerAbonnement() {
             if (confirm("Êtes-vous sûr de vouloir vous abonner ?")) {
@@ -18,6 +17,7 @@
                     success: function(response) {
                         // Si la mise à jour réussit, afficher un message de confirmation
                         alert("Vous êtes maintenant abonné !");
+                        window.location.href = "./AccueilProfils.php";
                     },
                     error: function(xhr, status, error) {
                         // En cas d'erreur, afficher un message d'erreur
