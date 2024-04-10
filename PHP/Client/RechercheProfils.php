@@ -74,20 +74,29 @@ session_start();
 <table class="table">
 
     <?php
-    include 'BackEnd/LoginDatabase.php';
-    if(isset( $_POST['submit'])) {
-        $nom=$_POST['search-nom'];
-        $ville=$_POST['search-ville'];
-        echo("<p>$nom</p>");
-        if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE nom LIKE %?%')) {
-            $stmt->bind_param('s', $nom);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $profil = $result->fetch_assoc();
-        }
-        foreach($profil as $prof){
-            echo("<p>wow</p>");
-        }
+        include 'BackEnd/LoginDatabase.php';
+        if(isset( $_POST['submit'])) {
+            $nom=$_POST['search-nom'];
+            $ville=$_POST['search-ville'];
+            echo("<p>$nom</p>");
+            if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ?')) {
+                $nom = "%" . $nom . "%";
+                $stmt->bind_param('s', $nom);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $profil = $result->fetch_all(MYSQLI_ASSOC);
+            }
+            foreach($profil as $prof){
+                echo("<p>wow</p>");
+                echo("<tr>");   
+                echo("<td>");
+                echo("<p>".$prof['prenom']." ".$prof['nom']."</p>");
+                echo("<p>".$prof['sexe']."</p>");
+                echo("<p>".$prof['ville']."</p>");
+                echo("<p>".$prof['pays']."</p>");
+                echo("</td>");
+                echo("</tr>");
+            }
         }
     ?>
 </table>
