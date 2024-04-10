@@ -29,7 +29,7 @@ input{
     text-align: center;
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
-    margin:auto;
+    
     cursor: pointer;
     position:absolute;
 }
@@ -37,4 +37,19 @@ input{
 header{
     box-shadow: 2px;
     z-index: 9;
+}
+
+.result{
+    margin:auto;
+    text-align: center;
+}
+
+
+.profil-trouvé{
+    background-color: aqua;
+    width: 33%;
+}
+
+.profil-img{
+    border-radius: 50%;
 }

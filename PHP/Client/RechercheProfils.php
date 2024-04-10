@@ -25,15 +25,10 @@ include "Header.php";
             <input type="text" class="filter-searchbar" placeholder="Pays" name="search-pays">
          </div>
          <div class="sex">
-            <input type="checkbox" class="checkbox-sex" name="sex1"> <label for="sex1">Homme</label>
-            <input type="checkbox" class="checkbox-sex" name="sex2"> <label for="sex2">Femme</label>
-            <input type="checkbox" class="checkbox-sex" name="sex3"> <label for="sex3">Autre</label>
+            <input type="checkbox" class="checkbox-sex" name="sex1" value="Homme"> <label for="sex1">Homme</label>
+            <input type="checkbox" class="checkbox-sex" name="sex2" value="Femme"> <label for="sex2">Femme</label>
+            <input type="checkbox" class="sex3" name="sex3" value="Autre"> <label for="sex3">Autre</label>
          </div>
-    <div class="age">
-            <p>Age</p>
-            <input type="text" placeholder="Minimum">
-            <input type="text" placeholder="Maximum">
-    </div>
     <button name="submit">Rechercher</button>
 </form>
 </div>
@@ -59,26 +54,42 @@ include "Header.php";
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
-            echo("<p>$nom</p>");
-            if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ?')) {
+            $pays=$_POST['search-pays'];
+            if(isset($_POST['sex1'])){
+            $sexe1=$_POST['sex1'];
+            } else {
+                $sexe1="";
+            }
+            if(isset($_POST['sex2'])){
+            $sexe2=$_POST['sex2'];
+            }else {
+                $sexe2="";
+            }
+            if(isset($_POST['sex3'])){
+            $sexe3=$_POST['sex3'];
+            }else {
+                $sexe3="";
+            }
+            }
+            if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ? and ville LIKE ? and (sexe=? or sexe=? or sexe=?) and pays LIKE ?')) {
                 $nom = "%" . $nom . "%";
-                $stmt->bind_param('s', $nom);
+                $ville = "%" . $ville . "%";
+                $pays = "%" . $pays . "%";
+                $stmt->bind_param('ssssss', $nom, $ville, $sexe1, $sexe2, $sexe3, $pays);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $profil = $result->fetch_all(MYSQLI_ASSOC);
             }
+                echo("<h3> il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
             foreach($profil as $prof){
-                echo("<p>wow</p>");
-                echo("<tr>");   
-                echo("<td>");
+                echo('<div class="profil-trouvé">');
+                echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
                 echo("<p>".$prof['prenom']." ".$prof['nom']."</p>");
                 echo("<p>".$prof['sexe']."</p>");
                 echo("<p>".$prof['ville']."</p>");
                 echo("<p>".$prof['pays']."</p>");
-                echo("</td>");
-                echo("</tr>");
-            }
-        }
+                echo("</div>");
+            }     
     ?>
 </table>
 </div>
