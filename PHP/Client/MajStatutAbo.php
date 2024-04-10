@@ -1,46 +1,28 @@
 <?php
+// Vérification de la session pour s'assurer que l'utilisateur est connecté
+include './BackEnd/VerificationConnexion.php';
 
-// Récupère les logins de l'utilisateur
-$servername = "localhost";
-$username = "votre_nom_utilisateur";
-$password = "votre_mot_de_passe";
-$dbname = "chat";
+// Inclusion du fichier de connexion à la base de données
+include './BackEnd/LoginDatabase.php';
 
-// Créer la connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Vérification si la requête POST contient la variable d'abonnement
+if(isset($_POST['abonnement']) && $_POST['abonnement'] == 'abonne') {
+    // Récupération de l'ID de l'utilisateur actuellement connecté
+    $userId = $_SESSION['user_id'];
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Échec de la connexion : " . $conn->connect_error);
-}
+    // Préparation de la requête SQL pour mettre à jour le statut d'abonnement dans la table "login"
+    $sql = "UPDATE `login` SET `isSub` = 1 WHERE `id` = $userId";
 
-// Vérifier si la requête est de type POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier si la donnée d'abonnement est reçue
-    if (isset($_POST['abonnement'])) {
-        // Récupérer la valeur de l'abonnement
-        $nouvel_abonnement = $_POST['abonnement'];
-
-        // Vous devez remplacer 'ID_UTILISATEUR' par l'identifiant de l'utilisateur connecté ou qui souhaite s'abonner
-        $id_utilisateur = 1; // Exemple d'identifiant d'utilisateur
-
-        // Mettre à jour le statut d'abonnement de l'utilisateur dans la base de données
-        $sql = "UPDATE login SET statut_abonnement = '$nouvel_abonnement' WHERE id = $id_utilisateur";
-        
-        if ($conn->query($sql) === TRUE) {
-            echo "Statut d'abonnement mis à jour avec succès.";
-        } else {
-            echo "Erreur lors de la mise à jour du statut d'abonnement : " . $conn->error;
-        }
+    // Exécution de la requête SQL
+    if(mysqli_query($conn, $sql)) {
+        // Envoi d'une réponse JSON en cas de succès
+        echo json_encode(array("success" => true));
     } else {
-        echo "Données d'abonnement non reçues.";
+        // Envoi d'une réponse JSON en cas d'échec
+        echo json_encode(array("success" => false, "error" => mysqli_error($conn)));
     }
 } else {
-    echo "Cette page ne peut être accédée directement.";
+    // Envoi d'une réponse JSON en cas de requête incorrecte
+    echo json_encode(array("success" => false, "error" => "Invalid request"));
 }
-
-// Fermer la connexion
-$conn->close();
 ?>
-
-
