@@ -12,8 +12,8 @@
 }
 
 body{
-    background-color: #92D66B;
     font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    background-color: #6CA546;
 }
 
 .master{
@@ -31,13 +31,17 @@ body{
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #FEFFFB;
 }
-.register-container {
+.container {
+    background-color: #6CA546;
     display: flex;
     flex-direction: column;
+    margin: 0;
     padding: 1vw;
+    justify-content: center;
     text-align: center;
+    align-items: center;
     border-radius: 5px;
-}
+  }
 .suppr-container {
     display: flex;
     flex-direction: column;
@@ -162,18 +166,17 @@ a:hover {
 
 
 .next, .prev, .send{
-    background-color: #d39582;
     display: inline-block;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-top: 20px;
     padding: 12px 24px;
-    border: 1px solid #813A26;
-    border-radius: 25px;
+    border: 1px solid #FF516D;
+    border-radius: 8px;
     transition: all 0.2s ease-in;
     position: relative;
     overflow: hidden;
-    font-size: 15px;
-    color: #FFFFFF;
+    font-size: 20px;
+    color: #FEFFFB;
+    background-color: #FF516D;
     z-index: 1;
     text-decoration: none;
     box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
@@ -196,7 +199,7 @@ a:hover {
 }
    
 .next:hover, .prev:hover, .send:hover{
-    color: #FFFFFF;
+    color: #FEFFFB;
     border: 1px solid #6CA546;
 }
    
@@ -220,3 +223,7 @@ a:hover {
     color:rgb(0, 0, 0);
     text-decoration: underline;
     }
+
+.register-container{
+    background-color: #92D66B;
+}
