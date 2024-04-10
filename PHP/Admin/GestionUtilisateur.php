@@ -20,8 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <title>Personalytree - Administration</title>
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <link rel="stylesheet" href="../../CSS/Admin/GestionUtilisateur.css">
-    <link rel="stylesheet" href="../../CSS/Client/Inscription.css">
+    <link rel="stylesheet" href="../../CSS/Admin/Inscription.css">
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Admin/Modification.js"></script>
 </head>
@@ -52,22 +51,22 @@ include "Header.php";
             <div class="modifie" style="display: flex;flex-direction: column;">
                 <?php 
                 if ($user['isSub'] == 0){
-                    echo '<button class="send" id="sub">Donner les droits abonné</button>';
+                    echo '<button class="sub">Donner les droits abonné</button>';
                 } else {
-                    echo '<button class="send" id="unsub">Retirer les droits abonné</button>';
+                    echo '<button class="sub">Retirer les droits abonné</button>';
                 }
                 if ($user['isAdmin'] == 0){
-                    echo '<button class="send" id="admin">Donner les droits administrateur</button>';
+                    echo '<button class="admin">Donner les droits administrateur</button>';
                 } else {
-                    echo '<button class="send" id="unadmin">Retirer les droits administrateur</button>';
+                    echo '<button class="admin">Retirer les droits administrateur</button>';
                 }
                 if($user['isBanned'] == 0){
-                    echo '<button class="send" id="ban">Bannir l\'utilisateur</button>';
+                    echo '<button class="ban">Bannir l\'utilisateur</button>';
                 } else {
-                    echo '<button class="send" id="unban">Débannir l\'utilisateur</button>';
+                    echo '<button class="ban">Débannir l\'utilisateur</button>';
                 }
                 ?>
-                <button class="send" id="delete">Supprimer l'utilisateur</button>
+                <button class="delete">Supprimer l'utilisateur</button>
             </div>
         </div>
     </div>

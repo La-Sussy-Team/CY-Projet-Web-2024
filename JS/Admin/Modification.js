@@ -22,29 +22,6 @@ $(document).ready(function() {
             $("#tel").removeClass("invalid").addClass("valid");
         }
     });
-    $("#password").blur(function() {
-        var input=$(this);
-        var password=input.val();
-        $("#password").next(".error").remove();
-        if(password.length < 8 && password.length > 0 || password.length > 40){
-            $("#password").removeClass("valid").addClass("invalid");
-            $("#password").after("<span class='error'>Le mot de passe doit contenir entre 8 et 40 caractères</span>");
-        } else {
-            $("#password").removeClass("invalid").addClass("valid");
-        }
-    });
-    $("#passwordConfirmation").blur(function() {
-        var input=$(this);
-        var password=input.val();
-        var passwordConfirmation=$("#password").val();
-        $("#passwordConfirmation").next(".error").remove();
-        if(password != passwordConfirmation){
-            $("#passwordConfirmation").removeClass("valid").addClass("invalid");
-            $("#passwordConfirmation").after("<span class='error'>Les mots de passe ne correspondent pas</span>");
-        } else {
-            $("#passwordConfirmation").removeClass("invalid").addClass("valid");
-        }
-    });
     $("#prenom").blur(function() {
         var input=$(this);
         var prenom=input.val();
@@ -90,18 +67,16 @@ $(document).ready(function() {
         }
     });
     $(".send").click(function() {
-        if ($("#username").hasClass("invalid") || $("#email").hasClass("invalid") || $("#tel").hasClass("invalid") || $("#password").hasClass("invalid") || $("#passwordConfirmation").hasClass("invalid") || $("#prenom").hasClass("invalid") || $("#nom").hasClass("invalid") || $("#ville").hasClass("invalid") || $("#adresse").hasClass("invalid")) {
+        if ($("#username").hasClass("invalid") || $("#email").hasClass("invalid") || $("#tel").hasClass("invalid") || $("#prenom").hasClass("invalid") || $("#nom").hasClass("invalid") || $("#ville").hasClass("invalid") || $("#adresse").hasClass("invalid")) {
             alert("Veuillez remplir les champs correctement.");
             return;
         } else {
             console.log("sending data");
             var formData = new FormData();
             var fileField = document.querySelector('input[type="file"]');
-            formData.append('currentPassword', document.getElementById('currentPassword').value);
+            formData.append('username', document.getElementById('username').value);
             formData.append('email', document.getElementById('email').value);
             formData.append('tel', document.getElementById('tel').value);
-            formData.append('password', document.getElementById('password').value);
-            formData.append('passwordConfirmation', document.getElementById('passwordConfirmation').value);
             formData.append('prenom', document.getElementById('prenom').value);
             formData.append('nom', document.getElementById('nom').value);
             formData.append('sexe', document.getElementById('sexe').value);
@@ -110,6 +85,7 @@ $(document).ready(function() {
             formData.append('adresse', document.getElementById('adresse').value);
             if (fileField.files.length > 0) {
                 formData.append('profileImage', fileField.files[0]);
+                console.log("file added");
             }
             formData.append('currentProfileImage', document.getElementById('currentProfileImage').value);
             fetch('./BackEnd/ValidationModification.php', {
@@ -120,10 +96,84 @@ $(document).ready(function() {
             .then(data => {
                 if (data.error) {
                     alert(data.error);
-                    window.location.href = './ModifierProfil.php';
+                    window.location.reload(false)
                 } else {
-                    alert("Modification effectuée avec succès.");
-                    window.location.href = './MonProfil.php';
+                    alert(data.success);
+                    window.location.reload(false)
+                }
+            })
+        }
+    });
+    $(".sub").click(function() {
+        var formData = new FormData();
+        formData.append('username', document.getElementById('username').value);
+        fetch('./BackEnd/ModificationSub.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+                window.location.reload(false)
+            } else {
+                alert(data.success);
+                window.location.reload(false)
+            }
+        })
+    });
+    $(".admin").click(function() {
+        var formData = new FormData();
+        formData.append('username', document.getElementById('username').value);
+        fetch('./BackEnd/ModificationAdmin.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+                window.location.reload(false)
+            } else {
+                alert(data.success);
+                window.location.reload(false)
+            }
+        })
+    });
+    $(".ban").click(function() {
+        var formData = new FormData();
+        formData.append('username', document.getElementById('username').value);
+        fetch('./BackEnd/ModificationBan.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+                window.location.reload(false)
+            } else {
+                alert(data.success);
+                window.location.reload(false)
+            }
+        })
+    });
+    $(".delete").click(function() {
+        if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+            var formData = new FormData();
+            formData.append('username', document.getElementById('username').value);
+            fetch('./BackEnd/SupprimerUtilisateur.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                    window.location.href = './ListeUtilisateurs.php';
+                } else {
+                    alert(data.success + " Vous allez être redirigé vers la liste des utilisateurs");
+                    window.location.href = './ListeUtilisateurs.php';
                 }
             })
         }

@@ -1,7 +1,7 @@
 <?php
 include "./BackEnd/VerificationConnexionAdmin.php";
 include "Header.php";
-include "../Client/BackEnd/LoginDatabase.php";
+include "./BackEnd/LoginDatabase.php";
 if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id')){
     $stmt -> execute();
     $result = $stmt -> get_result();
@@ -15,7 +15,6 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <title>Personalytree - Administration</title>
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <link rel="stylesheet" href="../../CSS/Admin/StylesCommuns.css">
     <link rel="stylesheet" href="../../CSS/Admin/ListeUtilisateurs.css">
 </head>
 <body>
@@ -23,7 +22,7 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
     <div class="flexer">
         <?php foreach ($users as $user): ?>
             <div class="card">
-                <img src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>" alt="<?php echo $user['username']; ?>" style="width: 300px;">
+                <img src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>" alt="<?php echo $user['username']; ?>" style="width: 300px; height: 300px">
                 <h1><?php echo $user['username']; ?></h1>
                 <p class="title"><?php echo $user['prenom'] . ' ' . $user['nom'] ?></p>
                 <p><?php echo $user['sexe'] ?></p>
