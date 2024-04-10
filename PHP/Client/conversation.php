@@ -1,13 +1,8 @@
 <?php
 include './BackEnd/VerificationConnexion.php';
 include './BackEnd/LoginDatabase.php';
-
-// Récupérer les conversations de l'utilisateur à afficher à droite
-
 $user_id = null;
-$username = $_SESSION['username']; // Supposons que le nom d'utilisateur est stocké dans la session
-
-// Requête SQL pour récupérer l'ID de l'utilisateur en fonction du nom d'utilisateur
+$username = $_SESSION['username'];
 $stmt = $con->prepare('SELECT id FROM login WHERE username = ?');
 if ($stmt) {
     $stmt->bind_param('s', $username);
@@ -16,7 +11,6 @@ if ($stmt) {
     $stmt->fetch();
     $stmt->close();
 }
-
 $sql = 'SELECT * FROM conversation WHERE user1_id = ? OR user2_id = ?';
 $stmt = $con->prepare($sql);
 if ($stmt) {
@@ -24,31 +18,28 @@ if ($stmt) {
     $stmt->execute();
     $user_conversations_result = $stmt->get_result();
     $stmt->close();
-
-    // Vérifier s'il y a des conversations à afficher
     if ($user_conversations_result && $user_conversations_result->num_rows > 0) {
         $user_conversations = $user_conversations_result->fetch_all(MYSQLI_ASSOC);
     } else {
-        // Aucune conversation à afficher
         $user_conversations = array();
     }
 } else {
-    // Gérer l'erreur de préparation de la requête
     echo "Erreur de préparation de la requête : " . $con->error;
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php
-        include "Header.php";
-    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversations</title>
+    <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
+    <title>Personalytree - Conversations</title>
+    <link rel="stylesheet" href="../../CSS/Client/Conversations.css">
 </head>
+<?php
+        include "Header.php";
+    ?>
 <body>
     <div class="conv">
     <h1 class="titreconv">Conversations</h1>
@@ -57,10 +48,7 @@ if ($stmt) {
         <ul>
             <?php foreach ($user_conversations as $conversation) : ?>
                 <?php
-                // Déterminer l'autre utilisateur dans la conversation
                 $other_user_id = ($conversation['user1_id'] == $user_id) ? $conversation['user2_id'] : $conversation['user1_id'];
-
-                // Requête pour récupérer le chemin d'accès à l'image de l'autre utilisateur
                 $stmt = $con->prepare('SELECT imgpath FROM infopersos WHERE user_id = ?');
                 if ($stmt) {
                     $stmt->bind_param('i', $other_user_id);
@@ -68,16 +56,11 @@ if ($stmt) {
                     $stmt->bind_result($imgpath);
                     $stmt->fetch();
                     $stmt->close();
-                    
-                    // Assurez-vous de vérifier si l'image existe avant de l'assigner à $image_other_user
-                    $image_other_user = isset($imgpath) ? $imgpath : 'chemin/par/defaut/image.jpg';
+                    $image_other_user = isset($imgpath) ? $imgpath : '../../../Assets/Client/ProfileImage/default.jpg';
                 } else {
-                    // Gérer l'erreur de préparation de la requête
                     echo "Erreur de préparation de la requête : " . $con->error;
                     exit;
                 }
-
-                // Récupérer le nom de l'autre utilisateur depuis la base de données
                 $stmt = $con->prepare('SELECT username FROM login WHERE id = ?');
                 if ($stmt) {
                     $stmt->bind_param('i', $other_user_id);
@@ -86,8 +69,6 @@ if ($stmt) {
                     $stmt->fetch();
                     $stmt->close();
                 }
-
-                // Récupérer le dernier message
                 $last_message = null;
                 $stmt = $con->prepare('SELECT message FROM messages WHERE conversation_id = ? ORDER BY id DESC LIMIT 1');
                 if ($stmt) {
@@ -101,80 +82,17 @@ if ($stmt) {
                     $last_message = "Aucun message";
                 }
                 ?>
-
                 <div class="conversation-module" onclick="window.location='get_messages.php?user_id=<?php echo $user_id ?>&other_user_id=<?php echo $other_user_id; ?>'" > 
                     <img src="../../../Assets/Client/ProfileImage/<?php echo $image_other_user; ?>" alt="Profile Image">
                     <li><a href="get_messages.php?user_id=<?php echo $user_id ?>&other_user_id=<?php echo $other_user_id; ?>"><?php echo htmlspecialchars($other_username); ?></a></li>
                     <p>Dernier message : <?php echo htmlspecialchars($last_message); ?></p>
                 </div>
-                <style>
-                
-                .conv{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin-top: 5%;
-                }
-
-                .titreconv {
-                    text-align: center;
-                    font-size: 36px; /* Adjust the font size to your desired size */
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                }
-
-                .conversations {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin-left: 0%;
-                    margin-right: 0%;
-                }
-
-                    .conversation-module {
-                        display: flex;
-                        align-items: center;
-                        cursor: pointer;
-                        padding: 10px;
-                        border: 1px solid #4CAF50;
-                        border-radius: 5px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                        margin-bottom: 10px;
-                        margin-left: 0%;
-                        margin-right: 0%;
-                    }
-
-
-                    .conversation-module:hover {
-                        background-color: #f5f5f5;
-                    }
-
-                    .conversation-module img {
-                        margin-right: 10px;
-                        width: 10%; /* Adjust the width to your desired size */
-                        height: 10%; /* Adjust the height to your desired size */
-                    }
-
-
-                    .conversation-module li {
-                        margin-right: 10px;
-                        font-size: 26px; /* Adjust the font size to your desired size */
-                    }
-
-
-                    .conversation-module p {
-                        flex-grow: 1;
-                        font-size: 18px; /* Adjust the font size to your desired size */
-                    }
-                </style>
         <?php endforeach; ?>
-
         </ul>
     <?php else : ?>
         <p>Aucune conversation disponible.</p>
     <?php endif; ?>
 </div>  
-
     <div class="nouvelle-conversation">
         <h2>Nouvelle Conversation</h2>
         <form method="POST" action="create_conversation.php">
@@ -184,8 +102,6 @@ if ($stmt) {
             <button type="submit">Créer la conversation</button>
         </form>
     </div>
-    
-    <a href="./Deconnexion.php">Se déconnecter</a>
 </div>
 </body>
 </html>
