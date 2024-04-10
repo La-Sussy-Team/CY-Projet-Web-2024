@@ -17,6 +17,7 @@ include "Header.php";
 ?>
 <body>
     <div class="filter-bar" id="filter-bar">
+        <p style="text-align: center;">Filtrez votre recherche</p>
         <div class="deroulant">
         <form method="post">
          <div class="info-general">
@@ -51,6 +52,9 @@ include "Header.php";
 
     <?php
         include 'BackEnd/LoginDatabase.php';
+        $nom="²";
+        $ville="²";
+        $pays="²";
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
@@ -81,6 +85,9 @@ include "Header.php";
                 $profil = $result->fetch_all(MYSQLI_ASSOC);
             }
                 echo("<h3> il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
+                ?>
+                <div class="display-result"></div>
+                <?php
             foreach($profil as $prof){
                 echo('<div class="profil-trouvé">');
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
@@ -90,7 +97,8 @@ include "Header.php";
                 echo("<p>".$prof['pays']."</p>");
                 echo("</div>");
             }     
-    ?>
+                ?>
+                </div>
 </table>
 </div>
 </body>
