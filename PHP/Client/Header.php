@@ -3,12 +3,12 @@
     <a href="../Accueil.php"><img class="logo" src="../../Assets/Logo/Logo_Fullscreen.png" alt=""></a>
     <ul class ="inter">
         <li><a href="../Accueil.php">Accueil</a></li>
-        <li><a href="#">Découverte de Profils</a></li>
+        <li><a href="#">Découverte de Profils</a></li> 
         <li><a href="./RechercheProfils.php">Recherche de Profils</a></li>
         <?php
         echo '<div class="inter">';
         if (isset($_SESSION['username'])) {
-            if (isset($_SESSION['isSub'])== 0) {
+            if (isset($_SESSION['isSub']) && $_SESSION['isSub'] == 0) {
                 echo '<li><a class="button" href="./OffreEtAbonnement.php"><img class="accAdmin" src="../../Assets/Logo/abonne.png">Offre et Abonnement</a><li>';
             }
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {

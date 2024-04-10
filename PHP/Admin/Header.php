@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="../../CSS/Header.css">
 <header>
-    <a href="../Accueil.php"><img class="logo" src="../../Assets/Logo/Logo_Fullscreen.png" alt=""></a>
+    <a href="../Accueil.php"><img class="logo" src="../../Assets/Logo/Logo_Fullscreen.png"></a>
     <ul class ="inter">
         <li><u>Gestion Administrateur</u></li>
         <li><a class="button" href="../Admin/AccueilAdmin.php"><img class="accAdmin" src="../../Assets/Logo/admin.png">Accueil Admin</a></li>
