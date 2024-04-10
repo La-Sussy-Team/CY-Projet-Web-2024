@@ -9,7 +9,7 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <title>PersonaliTree - Inscription</title>
-    <link rel="stylesheet" href="../../CSS/Client/Inscription2.css">
+    <link rel="stylesheet" href="../../CSS/Client/Inscription.css">
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Client/Inscription.js"></script>
 </head>
