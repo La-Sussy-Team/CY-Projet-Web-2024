@@ -1,6 +1,5 @@
 <?php
 include "./BackEnd/VerificationConnexionAdmin.php";
-include "Header.php";
 include "./BackEnd/LoginDatabase.php";
 if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id')){
     $stmt -> execute();
@@ -13,10 +12,13 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-    <title>Personalytree - Administration</title>
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
+    <title>Personalytree - Administration</title>
     <link rel="stylesheet" href="../../CSS/Admin/ListeUtilisateurs.css">
 </head>
+<?php
+include "Header.php";
+?>
 <body>
     <div class="Head" style="display: flex;flex: auto;justify-content: center;"><h1>Gestion des utilisateurs</h1></div>
     <div class="flexer">
