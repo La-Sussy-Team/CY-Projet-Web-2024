@@ -9,7 +9,7 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <title>PersonaliTree - Inscription</title>
-    <link rel="stylesheet" href="../../CSS/Client/Inscription.css">
+    <link rel="stylesheet" href="../../CSS/Client/Inscription2.css">
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Client/Inscription.js"></script>
 </head>
@@ -22,9 +22,9 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
 		</div>
 		<h2>Vous pouvez à présent vous connecter</h2>
 	</div>
-    <div class="register-container">
+    <div class="container">
         <div class="step active" id="step1">
-        <img id="profilePic" src="../../Assets/Client/ProfileImage/default.jpg" onclick="document.getElementById('profileImage').click();" style="cursor: pointer; width: 300px; height: 300px;">
+            <img id="profilePic" src="../../Assets/Client/ProfileImage/default.jpg" onclick="document.getElementById('profileImage').click();" style="cursor: pointer; width: 300px; height: 300px;">
             <input type="file" id="profileImage" name="profileImage" accept="image/*" style="display: none;" onchange="loadFile(event)">
             <label for="username"><h3>Nom d'utilisateur :</h3></label>
             <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required autocomplete="username" pattern="[A-Za-z0-9]+">
