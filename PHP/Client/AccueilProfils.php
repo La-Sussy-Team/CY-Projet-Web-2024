@@ -39,7 +39,7 @@ $username = $_SESSION['username'];
             padding: 0;
         }
         .container {
-            margin: 0 auto;
+            margin-top: 10vw;
         }
         
         .section h2 {
