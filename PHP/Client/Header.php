@@ -8,15 +8,20 @@
         <?php
         echo '<div class="inter">';
         if (isset($_SESSION['username'])) {
+            if (isset($_SESSION['isSub'])== 0) {
+                echo '<li><a class="button" href="./OffreEtAbonnement.php"><img class="accAdmin" src="../../Assets/Logo/abonne.png">Offre et Abonnement</a><li>';
+            }
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+            
                 echo '<li><a class="button" href="../Admin/AccueilAdmin.php"><img class="accAdmin" src="../../Assets/Logo/admin.png">Accueil Admin</a><li>';
             }
             echo '<li><a class="button" href="./MonProfil.php"><img class="accAdmin" src="../../Assets/Logo/myProfile.png">Mon Profil</a><li>';
             echo '<li><a class="button" href="./BackEnd/Deconnexion.php"><img class="accAdmin" src="../../Assets/Logo/logout.png">Déconnexion</a><li>';
-        } else {
-            echo '<li><a class="button" href="./Inscription.php"><img class="accAdmin" src="../../Assets/Logo/register.png">Inscription</a><li>';
-            echo '<li><a class="button" href="./Connexion.php"><img class="accAdmin" src="../../Assets/Logo/myProfile.png">Connexion</a><li>';
-        }
+            } else {
+                echo '<li><a class="button" href="./Inscription.php"><img class="accAdmin" src="../../Assets/Logo/register.png">Inscription</a><li>';
+                echo '<li><a class="button" href="./Connexion.php"><img class="accAdmin" src="../../Assets/Logo/myProfile.png">Connexion</a><li>';
+            }
+        
         echo '</div>';
         ?>
     </ul>
