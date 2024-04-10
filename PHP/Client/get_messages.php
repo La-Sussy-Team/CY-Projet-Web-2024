@@ -12,13 +12,27 @@ if (!isset($_GET['other_user_id'])) {
 // Récupérer l'identifiant de l'utilisateur avec lequel l'utilisateur connecté a une conversation à partir de la requête GET
 $other_user_id = $_GET['other_user_id'];
 
+$user_id = null;
+$username = $_SESSION['username']; // Supposons que le nom d'utilisateur est stocké dans la session
+
+// Requête SQL pour récupérer l'ID de l'utilisateur en fonction du nom d'utilisateur
+$stmt = $con->prepare('SELECT id FROM login WHERE username = ?');
+if ($stmt) {
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $stmt->bind_result($user_id);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+
 $sql = "SELECT id FROM conversation WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?) LIMIT 1";
-    
+ 
 // Préparez la requête
 $stmt = $con->prepare($sql);
 if ($stmt) {
     // Liez les valeurs des paramètres et exécutez la requête
-    $stmt->bind_param("iiii", $_SESSION['id'], $other_user_id, $other_user_id, $_SESSION['id']);
+    $stmt->bind_param("iiii", $user_id, $other_user_id, $other_user_id, $user_ids);
     $stmt->execute();
     
     // Récupérez le résultat de la requête
@@ -103,7 +117,7 @@ function recupererMessages($con, $user_id, $other_user_id) {
 $sql = 'SELECT * FROM serveurs_messages WHERE (user_id = ? AND other_user_id = ?) OR (user_id = ? AND other_user_id = ?)';
 $stmt = $con->prepare($sql);
 if ($stmt) {
-    $stmt->bind_param('iiii', $_SESSION['id'], $other_user_id, $other_user_id, $_SESSION['id']);
+    $stmt->bind_param('iiii', $user_id, $other_user_id, $other_user_id, $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
     $serveur_messages = $result->fetch_all(MYSQLI_ASSOC);
@@ -111,12 +125,12 @@ if ($stmt) {
     
     // Si aucun serveur de messages n'est ouvert, ouvrir un nouveau serveur
     if (empty($serveur_messages)) {
-        ouvrirServeurMessages($con, $_SESSION['id'], $other_user_id);
+        ouvrirServeurMessages($con, $user_id, $other_user_id);
     }
 }
 
 // Récupérer tous les messages entre l'utilisateur connecté et l'utilisateur sélectionné
-$messages = recupererMessages($con, $_SESSION['id'], $other_user_id);
+$messages = recupererMessages($con, $user_id, $other_user_id);
 ?>
 
 <!DOCTYPE html>
@@ -163,7 +177,7 @@ $messages = recupererMessages($con, $_SESSION['id'], $other_user_id);
 </style>
 
             <?php foreach ($messages as $message) : ?>
-                <?php if($message['sender_id'] == $_SESSION['id']): ?>
+                <?php if($message['sender_id'] == $user_id): ?>
                     <li class="current-user"><?php echo htmlspecialchars($message['message']); ?></li>
                 <?php else: ?>
                     <li class="other-user"><?php echo htmlspecialchars($message['message']); ?></li>
