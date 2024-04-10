@@ -7,7 +7,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
     if(isset($_POST['message']) && isset($_POST['receiver_id'])){
     
         // Récupérer l'ID de l'utilisateur connecté
-        $sender_id = $_SESSION['id'];
+        $sender_id = null;
+        $username = $_SESSION['username']; // Supposons que le nom d'utilisateur est stocké dans la session
+
+        // Requête SQL pour récupérer l'ID de l'utilisateur en fonction du nom d'utilisateur
+        $stmt = $con->prepare('SELECT id FROM login WHERE username = ?');
+        if ($stmt) {
+            $stmt->bind_param('s', $username);
+            $stmt->execute();
+            $stmt->bind_result($sender_id);
+            $stmt->fetch();
+            $stmt->close();
+}
 
         // Récupérer l'ID du destinataire du message
         $receiver_id = $_POST['receiver_id'];
