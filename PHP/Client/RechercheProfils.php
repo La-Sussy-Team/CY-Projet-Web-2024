@@ -74,16 +74,21 @@ session_start();
 <table class="table">
 
     <?php
-    if(isset( $POST['submit'])) {
+    include 'BackEnd/LoginDatabase.php';
+    if(isset( $_POST['submit'])) {
         $nom=$_POST['search-nom'];
         $ville=$_POST['search-ville'];
-
-        $sql="Select * from infopersos where nom like '%$nom%'";
-        $result=mysqli_query($conn,$sql);
-        if($result){
-            
+        echo("<p>$nom</p>");
+        if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE nom LIKE %?%')) {
+            $stmt->bind_param('s', $nom);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $profil = $result->fetch_assoc();
         }
-    }
+        foreach($profil as $prof){
+            echo("<p>wow</p>");
+        }
+        }
     ?>
 </table>
 </div>

@@ -1,7 +1,7 @@
 .filter-bar{
     width: 100%;
     margin:0 auto;
-    background-color: blue;
+    background-color: #92D66B;
     position: sticky;
     top:0px;
     display: none;
@@ -13,7 +13,10 @@
     display: block;
 }
 
-
+.info-general{
+    padding-top: 12px;
+    margin:auto;
+}
 
 input{
     margin-top: 4px;
@@ -22,12 +25,16 @@ input{
 
 .unroll-button{
     width: 5%;
-    background-color: blueviolet;
+    background-color: #92D66B;
     text-align: center;
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
     margin:auto;
     cursor: pointer;
+    position:absolute;
 }
 
-
+header{
+    box-shadow: 2px;
+    z-index: 9;
+}
