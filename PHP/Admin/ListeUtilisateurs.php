@@ -31,12 +31,16 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
                 <p>Est admin : <?php echo $user['isAdmin'] ? 'Oui' : 'Non' ?></p>
                 <p>
                     <a href="GestionUtilisateur.php?username=<?php echo urlencode($user['username']); ?>">
-                        <button>Gérer</button>
+                        <button>Gérer Profil</button>
+                    </a>
+                </p>
+                <p>
+                    <a href="GererMessages.php?username=<?php echo urlencode($user['username']); ?>">
+                        <button>Gérer Messages</button>
                     </a>
                 </p>
             </div>
         <?php endforeach; ?>
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 </html>
