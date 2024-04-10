@@ -8,12 +8,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username'])) {
         // Récupérer le nom de l'utilisateur destinataire depuis le formulaire
         $username = $_POST['username'];
-
+        $username2 = $_POST['username2'];
         // Inclure le fichier de configuration de la base de données
         include 'config.php';
 
         // Récupérer l'identifiant de l'utilisateur connecté
-        $user1_id = $_SESSION['id'];
+        $user1_id = null;
+
+
+        // Requête SQL pour récupérer l'ID de l'utilisateur en fonction du nom d'utilisateur
+        $stmt = $con->prepare('SELECT id FROM login WHERE username = ?');
+        if ($stmt) {
+            $stmt->bind_param('s', $username2);
+            $stmt->execute();
+            $stmt->bind_result($user1_id);
+            $stmt->fetch();
+            $stmt->close();
+        }
 
         // Rechercher l'identifiant de l'utilisateur destinataire dans la table login
         $stmt = $con->prepare('SELECT id FROM login WHERE username = ?');
