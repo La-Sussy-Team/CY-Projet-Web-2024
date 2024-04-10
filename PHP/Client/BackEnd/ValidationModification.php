@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['tel']
         $stmt->execute();
         if(isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
             $currentImagePath = __DIR__ . '/../../../Assets/Client/ProfileImage/' . $_POST['currentProfileImage'];
-            if (file_exists($currentImagePath)) {
+            if (file_exists($currentImagePath) && $_POST['currentProfileImage'] != 'default.jpg') {
                 unlink($currentImagePath);
             }
             $imageName = uniqid() . '-' . $_FILES['profileImage']['name'];
