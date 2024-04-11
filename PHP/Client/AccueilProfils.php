@@ -231,14 +231,6 @@ $username = $_SESSION['username'];
         <!-- Div "Recommandation de profil" -->
     
     </div>
-    <div class="recommendation">   
-            
-        <h2>Recommandation de profil</h2>
-        <div class="section-content">
-            <!-- Contenu de la section "Recommandation de profil" -->
-            
-        </div>
-        
-    </div> 
+    
 </body>
 </html>

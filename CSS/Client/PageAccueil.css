@@ -33,12 +33,32 @@
     border-radius: 15px;
 }
 
+.image-container2 {
+    width: 50%;
+    float: left;
+}
+.image-container2 img {
+    max-width: 100%;
+}
+
+.image-container2 {
+    background-color: #FEFFFB;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
 .titre-mid {
     text-align: center;
     font-family: "Your Preferred Font";
     font-size: 36px;
 }
 .image-container img {
+    width: 200px;
+}
+
+.image-container2 img {
     width: 200px;
 }
 
@@ -58,6 +78,16 @@
     margin-bottom: 10px;
 }
 
+.image-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.image-container2 img {
+    margin-bottom: 10px;
+}
 .image-grid {
     margin-top: 5%;
     margin-left: 10%;
@@ -74,20 +104,29 @@
     margin: 0 10px;
 }
 
-.titredivmid{
-    background-color: #FEFFFB; 
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+.image-container:hoover{
+    transform: translateY(-10px);
+}
+
+.image-container2 {
+    margin: 0 10px;
+}
+
+.image-container2:hoover{
+    transform: translateY(-10px);
+}
+
+.titredivtop{
+    background-image: url("../Assets/PageAcceuil/img1.png");
     padding: 5px;
-    border-radius: 15px;
-    margin-top: 5%; 
-    margin-left: 15%; 
-    margin-right: 15%; 
+    background-color: #6CA546;
 }
 
 .dessousfleur{
     background-color: #6CA546;
     padding-top: 20px; 
     padding-bottom: 20px; 
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .moderation-section {
@@ -111,17 +150,6 @@
     
 }
 
-.image-container2 {
-    width: 30%; 
-    float: right;
-    margin-right: 20%;
-}
-
-.image-container2 img {
-    max-width: 80%; 
-    height: auto;
-}
-
 :root {
     --rose: #FF516D;
     --marron-fonce: #813A26;
@@ -130,4 +158,42 @@
     --vert-fonce: #6CA546;
     --blanc: #FEFFFB;
     --beige: #FDE4DB;
+}
+
+.footer{
+    background-color: #FEFFFB;
+    padding: 50px;
+    box-shadow: 2px 2px 7px 5px rgb(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.foot{
+    text-decoration: none;
+    color: #813A26;
+    background-color: #FEFFFB;
+    margin-bottom: 0;
+    padding: 20px;
+    font-size: 15px;
+    transition: 0.3s;
+    font-family: Montserrat, sans-serif; 
+}
+
+.foot:hover{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.plusG{
+    text-decoration: none;
+    color: #813A26;
+    margin-bottom: 0;
+    padding: 20px;
+    font-size: 15px;
+    transition: 0.3s;
+    font-family: Montserrat, sans-serif; 
+}
+
+.plusG:hover{
+    font-size: 16px;
+    font-weight: bold;
 }
