@@ -139,6 +139,20 @@
         0px 0px 5px #813A26; 
     font-family: Montserrat, sans-serif; 
     font-size: 300%;
+    text-align: center;
+}
+
+.titre-mid2 {
+    color: #FEFFFB; 
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black, 
+        0px 0px 5px #813A26; 
+    font-family: Montserrat, sans-serif; 
+    font-size: 200%;
+    text-align: center;
 }
 
 .dessousfleur{
