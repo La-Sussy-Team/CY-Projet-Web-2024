@@ -23,7 +23,7 @@ include "Header.php";
 		<div class="validation-animation" id="validationAnimation">
 			<img src="../../Assets/Animation/validation.gif">
 		</div>
-		<h2>Vous pouvez à présent vous connecter</h2>
+		<h2>Vous pouvez à présent vous connecter et remplir le questionnaire de personnalité</h2>
 	</div>
     <div class="container">
         <div class="step active" id="step1">

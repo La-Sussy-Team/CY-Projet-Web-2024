@@ -40,18 +40,21 @@ include "Header.php";
 </form>
 </div>
 </div>
-<div class="unroll-button" onclick="menu()">
+<div id="unroll-button" class="unroll-button" onclick="menu()">
 <script>
     function menu(){
     const menu = document.getElementById("filter-bar");
+    const bouton = document.getElementById("unroll-button");
     if(menu.classList.contains("active")==false){
         menu.classList.add("active");
+        bouton.classList.add("active");
     } else {
         menu.classList.remove("active");
+        bouton.classList.remove("active");
     }
     }
 </script>
-<p>+</p>
+<p>   +   </p>
 </div>
 <div class="result">
 <table class="table">

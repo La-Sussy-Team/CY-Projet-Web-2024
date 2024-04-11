@@ -38,6 +38,11 @@ input{
     position:absolute;
 }
 
+.unroll-button.active{
+
+    position:relative;
+}
+
 header{
     box-shadow: 2px;
     z-index: 9;
