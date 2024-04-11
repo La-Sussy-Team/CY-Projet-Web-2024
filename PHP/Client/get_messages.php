@@ -139,7 +139,11 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages avec <?php echo htmlspecialchars($username); ?></title>
+    <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
 </head>
+<?php
+        include "Header.php";
+    ?>
 <body>
     <h1>Conversation avec <?php echo htmlspecialchars($username); ?></h1>
 
@@ -147,13 +151,25 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
     <div class="messages">
         <ul>
 <style>
+
+
+    h1 {
+        margin-top: 7vw;
+        text-align: center;
+    }
+
+
     .messages {
-        max-width: 600px;
+        max-width: 25vw;
         margin: 0 auto;
         padding: 20px;
         background-color: #f7f7f7;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     .messages ul {
         list-style-type: none;
@@ -169,31 +185,136 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
         margin-right: 20%;
     }
     .messages .current-user {
-        background-color: #0099ff;
+        background-color: #92D668;
         color: white;
         margin-left: 20%;
         text-align: right;
     }
+
+    /* Style pour la fenêtre modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 </style>
 
-            <?php foreach ($messages as $message) : ?>
-                <?php if($message['sender_id'] == $user_id): ?>
-                    <li class="current-user"><?php echo htmlspecialchars($message['message']); ?></li>
-                <?php else: ?>
-                    <li class="other-user"><?php echo htmlspecialchars($message['message']); ?></li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            
+
+<script>
+// Définition de la fonction pour supprimer un message
+function deleteMessage(messageId) {
+    console.log(messageId);
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce message ?")) {
+        $.ajax({
+            url: 'delete_message.php',
+            type: 'POST',
+            data: { messageId: messageId },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                alert("Une erreur s'est produite lors de la suppression du message.");
+            }
+        });
+    }
+}
+
+// Définition de la fonction pour signaler un message
+function reportMessage(messageId) {
+    console.log(messageId);
+    $.ajax({
+        url: 'report_message.php',
+        type: 'POST',
+        data: { messageId: messageId },
+        success: function(response) {
+            alert("Le message a été signalé avec succès.");
+        },
+        error: function(xhr, status, error) {
+            alert("Une erreur s'est produite lors du signalement du message.");
+        }
+    });
+}
+</script>
+
+
+
+
+        <script>
+// Fonction pour afficher les boutons de suppression et de signalement
+function showButtons() {
+    $(this).find('.action-buttons').show();
+}
+
+// Fonction pour masquer les boutons de suppression et de signalement
+function hideButtons() {
+    $(this).find('.action-buttons').hide();
+}
+</script>
+
+    <?php foreach ($messages as $message) : ?>
+        <?php $isCurrentUser = ($message['sender_id'] == $user_id); ?>
+        <li class="<?php echo $isCurrentUser ? 'current-user' : 'other-user'; ?>" 
+            onmouseenter="showButtons.call(this)" onmouseleave="hideButtons.call(this)">
+            <?php echo htmlspecialchars($message['message']); ?>
+            <?php if ($isCurrentUser) : ?>
+                <div class="action-buttons" style="display:none;">
+                    <button class="delete-btn" onclick="deleteMessage(<?php echo $message['id']; ?>)">Supprimer</button>
+                </div>
+            <?php else : ?>
+                <div class="action-buttons" style="display:none;">
+                    <button class="report-btn" onclick="reportMessage(<?php echo $message['id']; ?>)">Signaler</button>
+                </div>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+
+
+
+
         </ul>
     </div>
 
-    <!-- Formulaire pour envoyer de nouveaux messages -->
-    
-    
+
+
     <style>
+
+        .messages {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
         .messages li {
             display: inline-block;
-            max-width: 80%;
+            max-width: 60%;
             margin-bottom: 10px;
             padding: 10px;
             border-radius: 20px;
@@ -202,10 +323,12 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
             clear: both;
         }
         .messages .current-user {
-            background-color: #0099ff;
+            word-wrap: break-word;
+            background-color: #92D668;
             color: white;
             float: right;
             text-align: left;
+            over
         }
         .messages .current-user::after {
             content: "";
@@ -214,11 +337,12 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
             right: -10px;
             width: 0;
             height: 0;
-            border-top: 10px solid #0099ff;
+            border-top: 10px solid #92D668;
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
         }
         .messages .other-user {
+            word-wrap: break-word;
             background-color: #e6e6e6;
             float: left;
             text-align: left;
@@ -262,38 +386,67 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #0099ff;
+            background-color: #92D668;
             color: white;
             cursor: pointer;
         }
+
+        .report-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #92D668;
+            color: white;
+            cursor: pointer;
+        }
+
+        .delete-btn{
+            
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #e6e6e6;
+            color: white;
+            cursor: pointer;
+        }
+
+
         button:hov {
             background-color: #007acc;
         }
+
+
+
     </style>
+
 
     
 
 <style>
-    /* Ajoutez cette règle pour contrôler l'ordre d'affichage */
+
     .container {
         display: flex;
         flex-direction: column;
+        margin-top: 35vw;
     }
 </style>
 
 <div class="container">
-    <div class="messages">
-        <!-- Vos messages ici -->
-    </div>
+    
 
     <form action="envoyer_message.php" method="post" class="form-messages">
         <input type="hidden" name="receiver_id" value="<?php echo $other_user_id; ?>">
         <input type="hidden" name="conversation_id" value="<?php echo $conversation_id; ?>">
-        <textarea name="message" placeholder="Votre message ici" required style="flex-grow: 1;"></textarea>
+        <input type="text" name="message" placeholder="Votre message ici" required style="flex-grow: 1;">
+        
         <button type="submit">Envoyer</button>
     </form>
+    <script>
+        var messagesContainer = document.querySelector('.messages');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    </script>
+    </form>
 </div>
-
 
 
 </body>
