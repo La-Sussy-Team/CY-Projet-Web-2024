@@ -29,7 +29,10 @@ include "Header.php";
         <div class="sex">
             <input type="checkbox" class="checkbox-sex" name="sex1" value="Homme"> <label for="sex1">Homme</label>
             <input type="checkbox" class="checkbox-sex" name="sex2" value="Femme"> <label for="sex2">Femme</label>
-            <input type="checkbox" class="sex3" name="sex3" value="Autre"> <label for="sex3">Autre</label>
+            <input type="checkbox" class="checkbox-sex" name="sex3" value="Autre"> <label for="sex3">Autre</label>
+        </div>
+        <div class="desc">
+            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés"> 
         </div>
     <button name="submit">Rechercher</button>
 </form>
@@ -55,6 +58,7 @@ include "Header.php";
         $nom=null;
         $ville=null;
         $pays=null;
+        $keyword=null;
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
@@ -79,6 +83,9 @@ include "Header.php";
                 $sexe2="Femme";
                 $sexe3="Autre";
             }
+            if(isset($_POST['desc'])){
+            $keyword= explode("~",$_POST['desc']);
+            }
             }
             if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ? and ville LIKE ? and (sexe=? or sexe=? or sexe=?) and pays LIKE ?')) {
                 $nom = "%" . $nom . "%";
@@ -94,6 +101,21 @@ include "Header.php";
                 <div class="display-result">
                 <?php
             foreach($profil as $prof){
+                $verif=1;
+                if($keyword["0"]!=""){
+                    if(sizeof($keyword)!=0){
+                        foreach($keyword as $word){
+                            if($prof['interets']!=null){
+                                if(strpos($prof['interets'],$word)==false || $prof['interets']==null){
+                                $verif=0;
+                                }
+                            } else if ($prof['interets']==null){
+                                $verif=0;
+                            }
+                        }
+                    }
+                }
+                if($verif==1){
                 echo('<div class="profil-trouvé">');
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
                 echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
@@ -101,7 +123,9 @@ include "Header.php";
                 echo("<p>".$prof['ville']."</p>");
                 echo("<p>".$prof['pays']."</p>");
                 echo("</div>");
-            }     
+                }
+            }
+              
                 ?>
                 </div>
                 </div>
