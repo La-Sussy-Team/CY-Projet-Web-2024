@@ -13,6 +13,9 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Client/Inscription.js"></script>
 </head>
+<?php
+include "Header.php";
+?>
 <body>
     <div class="overlay" id="overlay"></div>
 	<div class="ilotValider" id="ilotValider">

@@ -45,6 +45,9 @@ if (isset($_SESSION['loggedin'])) {
     <link rel="stylesheet" href="../../CSS/Client/LoginContainer.css">
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
 </head>
+<?php
+include "Header.php";
+?>
 <body>
     <div class="master">
         <div class="login-container">
