@@ -36,7 +36,8 @@ session_start();
     </header>
     <div class="middle1">
         <div class="titredivtop">
-            <h2 class="titre-mid">PersonnaliTree : Trouvez l'amour à l'aide des plantes</h2>
+            <img class="logotop" src="../Assets/Logo/Logo_Fullscreen.png" alt="">
+            <h2 class="titre-mid">PersonnaliTree : Trouvez l'amour grâce aux plantes</h2>
         </div>
         <div class="image-grid">
             <div class="image-container">
@@ -53,30 +54,28 @@ session_start();
                 <div class="image-container">
                     <img src="../Assets/PageAcceuil/iris.png" alt="Image 1">
                     <h3>Personnalité Aventureuse</h3>
-                    <p>Rencontrez des personnes qui aiment l'aventure et trouvez la plante qui vous accompagnera dans vos explorations.</p>
+                    <p>Rencontrez des personnes qui aiment l'aventure et trouvez la plante qui vous accompagnera dans vos explorations</p>
                 </div>
                 <div class="image-container">
                     <img src="../Assets/PageAcceuil/hibiscus.png" alt="Image 2">
                     <h3>Personnalité Créative</h3>
-                    <p>Rencontrez des personnes créatives et trouvez la plante qui inspirera votre imagination.</p>
+                    <p>Rencontrez des personnes créatives et trouvez la plante qui inspirera votre imagination</p>
                 </div>
                 <div class="image-container">
                     <img src="../Assets/PageAcceuil/passiflore.png" alt="Image 3">
                     <h3>Personnalité Calme</h3>
-                    <p>Rencontrez des personnes calmes et trouvez la plante qui apportera sérénité dans votre vie.</p>
+                    <p>Rencontrez des personnes calmes et trouvez la plante qui apportera sérénité dans votre vie</p>
                 </div>
             </div>
         </div>
         <div class="moderation-section">
         <div class="image-container2">
-                <img src="../Assets/PageAcceuil/moderateur.png" alt="Image 4">
+                <img src="../Assets/PageAcceuil/securite.png" alt="Image 4">
                 <h3>Modération et Anti-Harcèlement</h3>
-                <p>Nous prenons très au sérieux la sécurité de nos utilisateurs. Notre équipe de modération travaille sans relâche pour prévenir et éliminer tout comportement inapproprié ou harcelant. Nous nous engageons à créer un environnement sûr et accueillant pour tous.</p>
+                <p>Nous prenons très au sérieux la sécurité de nos utilisateurs. Notre équipe de modération travaille sans relâche pour prévenir et éliminer tout comportement inapproprié ou harcelant. Nous nous engageons à créer un environnement sûr et accueillant pour tous</p>
             </div>
         </div>
-    </div>
-
-    <div class="footer">
+        <div class="footer">
             <a class="foot" href="Accueil.php">© 2024 PersonaliTree</a>
             <a class="foot" href="Accueil.php">Conditions générales d'utilisation</a>
             <a class="foot" href="Accueil.php">Régles de  communauté</a>
@@ -84,5 +83,8 @@ session_start();
                 <a class="foot" href="Accueil.php">▲ Retour en haut ▲</a>
             </div>
         </div>
+    </div>
+
+    
 </body>
 </html>
