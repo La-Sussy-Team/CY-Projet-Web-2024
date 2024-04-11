@@ -32,7 +32,7 @@ include "Header.php";
             <input type="checkbox" class="checkbox-sex" name="sex3" value="Autre"> <label for="sex3">Autre</label>
         </div>
         <div class="desc">
-            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés (séparés avec un '~')">
+            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés (séparés avec une ',')">
             <input type="number" class="filter-age-min" name="age-min" placeholder="Age minimum">
             <input type="number" class="filter-age-max" name="age-max" placeholder="Age maximum">
         </div>
@@ -88,7 +88,7 @@ include "Header.php";
                 $sexe3="Autre";
             }
             if(isset($_POST['desc'])){
-            $keyword= explode("~",$_POST['desc']);
+            $keyword= explode(",",$_POST['desc']);
             }
             if($_POST['age-min']!=""){
                 $agemin= $_POST['age-min'];
