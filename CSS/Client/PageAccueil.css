@@ -183,17 +183,3 @@
     font-weight: bold;
 }
 
-.plusG{
-    text-decoration: none;
-    color: #813A26;
-    margin-bottom: 0;
-    padding: 20px;
-    font-size: 15px;
-    transition: 0.3s;
-    font-family: Montserrat, sans-serif; 
-}
-
-.plusG:hover{
-    font-size: 16px;
-    font-weight: bold;
-}
