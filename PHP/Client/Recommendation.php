@@ -29,14 +29,19 @@ include "Header.php";
 
                 $username = $_SESSION['username'];
 
-                $query = "SELECT x, y FROM login WHERE username = '$username'";
+                $query = "SELECT id FROM login WHERE username = '$username'";
+                $result = mysqli_query($con, $query);
+                $row = mysqli_fetch_assoc($result);
+                $id = $row['id'];
+
+                $query = "SELECT x, y FROM relationplante WHERE  id = '$id'";
                 $result = mysqli_query($con, $query);
                 $row = mysqli_fetch_assoc($result);
                 $current_user_x = $row['x'];
                 $current_user_y = $row['y'];
 
 
-                $query = "SELECT username, x, y FROM login";
+                $query = "SELECT id, x, y FROM relationplante";
                 $result = mysqli_query($con, $query);
 
                 $distances = array();
@@ -44,7 +49,7 @@ include "Header.php";
                 while ($row = mysqli_fetch_assoc($result)) {
                     if ($row['x'] != null && $row['y'] != null){
                         $distance = sqrt(pow($row['x'] - $current_user_x, 2) + pow($row['y'] - $current_user_y, 2));
-                        $distances[] = array('username' => $row['username'], 'distance' => $distance);
+                        $distances[] = array('id' => $row['id'], 'distance' => $distance);
                     }
                 }
 
@@ -54,9 +59,6 @@ include "Header.php";
 
                 $closest_users = array_slice($distances, 0, 4);
 
-                foreach ($closest_users as $user) {
-                    echo $user['username'] . "<br>";
-                }
 
             ?>
 
@@ -67,11 +69,7 @@ include "Header.php";
 
 
                     foreach ($closest_users as $user) {
-                        $username = $user['username'];
-                        $query = "SELECT id FROM login WHERE username = '$username'";
-                        $result = mysqli_query($con, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        $id = $row['id'];
+                        $id = $user['id'];
 
                         $query = "SELECT * FROM infopersos WHERE user_id = '$id'";
                         $result = mysqli_query($con, $query);
