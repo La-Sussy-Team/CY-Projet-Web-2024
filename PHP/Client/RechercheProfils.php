@@ -144,6 +144,9 @@ include "Header.php";
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
                 echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
                 echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
+                if($prof['dateNaissance']!=null){
+                echo("<p><u> Age:</u> ".$age." ans</p>");
+                }
                 echo("<p>".$prof['ville']."</p>");
                 echo("<p>".$prof['pays']."</p>");
                 echo("</div>");
