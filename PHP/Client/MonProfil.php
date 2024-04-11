@@ -29,14 +29,39 @@ include "Header.php";
 ?>
 <body>
     <div class="profile-container">
-        <img id="profilePic" src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>">
-        <div class="profile-info">
-            <p><?php echo $user['prenom']; ?></p>
-            <p><?php echo $user['nom']; ?></p>
-            <p>Tel: <?php echo $user['phone']; ?></p>
-            <p>Sexe: <?php echo $user['sexe']; ?></p>
-            <p>Pays: <?php echo $user['pays']; ?></p>
-            <p>Ville: <?php echo $user['ville']; ?></p>
+        <div class="profile-top">
+            <div class="profile-pic">
+                <img id="profilePic" src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>">
+                <button class="contact-button" name="me contacter">
+            </div>
+            <div class="profile-info">
+                <div class="identity">
+                    <p><?php echo ($user['prenom']." ".$user['nom']); ?></p>
+                </div>
+                <div class="info">
+                    <p>Tel: <?php echo $user['phone']; ?></p>
+                    <p>Sexe: <?php echo $user['sexe']; ?></p>
+                    <p>Pays: <?php echo $user['pays']; ?></p>
+                    <p>Ville: <?php echo $user['ville']; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="profile-mid">
+            <p>Tel: <?php echo $user['bio']; ?></p>
+        </div>
+        <div class="profile-bot">
+            <div class="desc-plant">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum eveniet non ad amet atque, fugit dolor tenetur quam repellendus doloribus inventore, modi ipsa. Dolor, sapiente. Neque autem eaque cum modi.</p>
+            </div>
+            <div class="id-plant">
+                <div class="nom-plant">
+                <p>a l'aide</p>
+                </div>
+                <div class="img-plant">
+                <p>a</p>
+                </div>
+            </div>
+        </div>
             <form action="Deconnexion.php" method="POST">
                 <button type="submit">Logout</button>
             </form>
