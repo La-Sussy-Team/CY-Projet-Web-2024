@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['em
         $stmt->execute();
         $last_id = $con->insert_id;
         if ($stmt = $con->prepare('INSERT INTO infopersos (user_id, email, phone, prenom, nom, sexe, dateNaissance, ville, adresse, pays, bio, interets) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')) {
-            $stmt->bind_param('isisssssssss', $last_id, $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['dateNaissance'], $_POST['ville'], $_POST['adresse'], $_POST['pays'], $_POST['bio'], $_POST['interets']);
+            $stmt->bind_param('isssssssssss', $last_id, $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['dateNaissance'], $_POST['ville'], $_POST['adresse'], $_POST['pays'], $_POST['bio'], $_POST['interets']);
             $stmt->execute();
             if(isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
                 $imageName = uniqid() . '-' . $_FILES['profileImage']['name'];

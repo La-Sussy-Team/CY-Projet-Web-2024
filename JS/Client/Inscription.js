@@ -266,7 +266,7 @@ $(document).ready(function() {
         }
     });
     $(".send").click(function() {
-        if ($("#username").hasClass("invalid") || $("#email").hasClass("invalid") || $("#tel").hasClass("invalid") || $("#password").hasClass("invalid") || $("#passwordConfirmation").hasClass("invalid") || $("#prenom").hasClass("invalid") || $("#nom").hasClass("invalid") || $("#ville").hasClass("invalid") || $("#adresse").hasClass("invalid")) {
+        if ($("#username").hasClass("invalid") || $("#email").hasClass("invalid") || $("#tel").hasClass("invalid") || $("#password").hasClass("invalid") || $("#passwordConfirmation").hasClass("invalid") || $("#prenom").hasClass("invalid") || $("#nom").hasClass("invalid") || $("#dateNaissance").hasClass("invalid") || $("#ville").hasClass("invalid") || $("#adresse").hasClass("invalid") || $("#bio").hasClass("invalid") || $("#hiddenInterets").hasClass("invalid")) {
             alert("Veuillez remplir les champs correctement.");
             return;
         } else {

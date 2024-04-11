@@ -100,7 +100,7 @@ include "Header.php";
             <label for="bio">Biographie :</label>
             <textarea name="bio" id="bio" required></textarea>
             <label for="interets">Centres d'intérêts :</label>
-            <input type="text" id="interets" required>
+            <input type="text" id="interets" placeholder="Appuyer sur Entrer pour ajouter le centre d'intérêt" required>
             <ul id="keywords"></ul>
             <input type="hidden" name="interets" id="hiddenInterests">
             <button class="prev">Précédent</button>

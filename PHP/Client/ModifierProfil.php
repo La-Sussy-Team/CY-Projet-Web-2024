@@ -44,9 +44,12 @@ include "Header.php";
             <label for="prenom">Prenom :</label> <input type="text" id="prenom" name="prenom" value="<?php echo $user['prenom']; ?>"><br>
             <label for="nom">Nom :</label> <input type="text" id="nom" name="nom" value="<?php echo $user['nom']; ?>"><br>
             <label for="sexe">Sexe :</label> <input type="text" id="sexe" name="sexe" value="<?php echo $user['sexe']; ?>"><br>
+            <label for="dateNaissance">Date de naissance :</label> <input type="date" name="dateNaissance" id="dateNaissance" value="<?php echo $user['dateNaissance']; ?>" required><br>
             <label for="pays">Pays :</label> <input type="text" id="pays" name="pays" value="<?php echo $user['pays']; ?>"><br>
             <label for="ville">Ville :</label> <input type="text" id="ville" name="ville" value="<?php echo $user['ville']; ?>"><br>
             <label for="adresse">Adresse :</label> <input type="text" id="adresse" name="adresse" value="<?php echo $user['adresse']; ?>"><br>
+            <label for="bio">Biographie :</label> <textarea name="bio" id="bio" required><?php echo $user['bio']; ?></textarea><br>
+            <label for="interets">Centres d'intérêts :</label> <input type="text" id="interets" name="interets" placeholder="Appuyer sur Entrer pour ajouter le centre d'intérêt" required><ul id="keywords"></ul><input type="hidden" name="interets" id="hiddenInterests" value="<?php echo $user['interets']; ?>"><br>
             <button class="send" id="send">Envoyer les modifications</button>
         </div>
     </div>

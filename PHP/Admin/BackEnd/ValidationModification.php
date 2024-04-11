@@ -13,10 +13,10 @@ if ($stmt = $con->prepare('SELECT id FROM login WHERE username = ?')) {
     echo json_encode($response);
     exit();
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['ville'], $_POST['adresse'], $_POST['pays'])){
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['ville'], $_POST['adresse'], $_POST['pays'], $_POST['dateNaissance'], $_POST['bio'], $_POST['interets'])){
     include './LoginDatabase.php';
-    if ($stmt = $con->prepare('UPDATE infopersos SET email=?, phone=?, prenom=?, nom=?, sexe=?, ville=?, adresse=?, pays=? WHERE user_id=?')) {
-        $stmt->bind_param('ssssssssi', $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['ville'], $_POST['adresse'], $_POST['pays'], $login['id']);
+    if ($stmt = $con->prepare('UPDATE infopersos SET email=?, phone=?, prenom=?, nom=?, sexe=?, dateNaissance=?, ville=?, adresse=?, pays=?, bio=?, interets=? WHERE user_id=?')) {
+        $stmt->bind_param('sisssssssssi', $_POST['email'], $_POST['tel'], $_POST['prenom'], $_POST['nom'], $_POST['sexe'], $_POST['dateNaissance'], $_POST['ville'], $_POST['adresse'], $_POST['pays'], $_POST['bio'], $_POST['interets'], $login['id']);
         $stmt->execute();
         if(isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
             if ($stmt = $con->prepare('SELECT id FROM login WHERE username = ?')) {
