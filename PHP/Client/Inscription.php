@@ -77,6 +77,8 @@ include "Header.php";
                 <option value="Femme">Femme</option>
                 <option value="Autre">Autre</option>
             </select>
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="date" name="dateNaissance" id="dateNaissance" required>
             <button class="prev">Précédent</button>
             <button class="next">Suivant</button>
         </div>
@@ -95,10 +97,12 @@ include "Header.php";
             <button class="next">Suivant</button>
         </div>
         <div class="step" id="step5">
-            <label for="dateNaissance">Date de naissance :</label>
-            <input type="date" name="dateNaissance" id="dateNaissance" required>
             <label for="bio">Biographie :</label>
             <textarea name="bio" id="bio" required></textarea>
+            <label for="interets">Centres d'intérêts :</label>
+            <input type="text" id="interets" required>
+            <ul id="keywords"></ul>
+            <input type="hidden" name="interets" id="hiddenInterests">
             <button class="prev">Précédent</button>
             <button class="send" id="send">S'inscrire</button>
         </div>
