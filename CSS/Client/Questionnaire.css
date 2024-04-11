@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.master {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.login-container {
+    width: 100%;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container form h2 {
+    margin-bottom: 10px;
+}
+
+.login-container form input[type="radio"] {
+    margin: 5px 0;
+}
+
+.login-container form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.login-container form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-container form div.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.login-container form div.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
