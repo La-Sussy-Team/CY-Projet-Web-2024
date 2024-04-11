@@ -184,7 +184,7 @@
     background-color: #FEFFFB;
     box-shadow: 2px 2px 7px 5px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin-top: auto; /* Place le footer en bas */
+    margin-top: auto; 
 }
 
 
@@ -208,7 +208,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Assure que le contenu s'étend sur toute la hauteur de la fenêtre */
+    min-height: 100vh; 
 }
 
 
