@@ -92,6 +92,14 @@ include "Header.php";
             <label for="adresse">Adresse :</label>
             <input type="text" name="adresse" id="adresse" required>
             <button class="prev">Précédent</button>
+            <button class="next">Suivant</button>
+        </div>
+        <div class="step" id="step5">
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="date" name="dateNaissance" id="dateNaissance" required>
+            <label for="bio">Biographie :</label>
+            <textarea name="bio" id="bio" required></textarea>
+            <button class="prev">Précédent</button>
             <button class="send" id="send">S'inscrire</button>
         </div>
     </div>
