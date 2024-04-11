@@ -37,7 +37,7 @@ session_start();
     <div class="middle1">
         <div class="titredivtop">
             <img class="logotop" src="../Assets/Logo/Logo_Fullscreen.png" alt="">
-            <h2 class="titre-mid">PersonnaliTree : Rencontre par affinité naturelle</h2>
+            <h2 class="titre-mid">PersonaliTree : Rencontre par affinité naturelle</h2>
             <h2 class="titre-mid2">Trouvez l'amour grâce aux plantes</h2>
         </div>
         <div class="image-grid">
