@@ -120,7 +120,7 @@
 }
 
 .titredivtop{
-    background-image: url("H:/Documents/Cours/S2/DevWeb/CY-Projet-Web-2024/Assets/PageAcceuil/img1.png");
+    background-image: url("../Assets/PageAccueil/img1.png");
     padding: 5px;
     background-color: #6CA546;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
