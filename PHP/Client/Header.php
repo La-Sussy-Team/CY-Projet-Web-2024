@@ -15,6 +15,7 @@
             
                 echo '<li><a class="button" href="../Admin/AccueilAdmin.php"><img class="accAdmin" src="../../Assets/Logo/admin.png">Accueil Admin</a><li>';
             }
+            echo '<li><a class="button" href="./AccueilProfils.php"><img class="accAdmin" ">Accueil Profil</a><li>';
             echo '<li><a class="button" href="./MonProfil.php"><img class="accAdmin" src="../../Assets/Logo/myProfile.png">Mon Profil</a><li>';
             echo '<li><a class="button" href="./BackEnd/Deconnexion.php"><img class="accAdmin" src="../../Assets/Logo/logout.png">Déconnexion</a><li>';
             } else {

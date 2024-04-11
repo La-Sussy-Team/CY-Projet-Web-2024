@@ -19,6 +19,12 @@ session_start();
             <li><a href="#">Découverte de Profils</a></li>
             <li><a href="./Client/RechercheProfils.php">Recherche de Profils</a></li>
             <?php
+                echo '<div class="inter">';
+                if (isset($_SESSION['username'])) {
+                    echo '<li><a href="./Client/AccueilProfils.php"> Accueil Profil</a><li>';
+                }
+            ?>
+            <?php
             echo '<div class="inter">';
             if (isset($_SESSION['username'])) {
                 if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
