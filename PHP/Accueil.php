@@ -15,15 +15,9 @@ session_start();
     <header>
         <a href="./Accueil.php"><img class="logo" src="../Assets/Logo/Logo_Fullscreen.png" alt=""></a>
         <ul class ="inter">
-            <li><a href="./Accueil.php">Accueil</a></li>
-            <li><a href="#">Découverte de Profils</a></li>
-            <li><a href="./Client/RechercheProfils.php">Recherche de Profils</a></li>
-            <?php
-                echo '<div class="inter">';
-                if (isset($_SESSION['username'])) {
-                    echo '<li><a href="./Client/AccueilProfils.php"> Accueil Profil</a><li>';
-                }
-            ?>
+            <li><a class="plusG" href="./Accueil.php">Accueil</a></li>
+            <li><a class="plusG" href="#">Découverte de Profils</a></li>
+            <li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>
             <?php
             echo '<div class="inter">';
             if (isset($_SESSION['username'])) {
@@ -41,15 +35,13 @@ session_start();
         </ul>
     </header>
     <div class="middle1">
-        <img class="img1" src="../Assets/PageAcceuil/img1.png" alt="">
-        <div class="titredivmid">
-            <h2 class="titre-mid">PersonnaliTree : trouvez l'amour sur votre personnalité</h2>
-            <h2 class="titre-mid"> à l'aide des plantes</h2>
+        <div class="titredivtop">
+            <h2 class="titre-mid">PersonnaliTree : Trouvez l'amour à l'aide des plantes</h2>
         </div>
         <div class="image-grid">
             <div class="image-container">
                 <img src="../Assets/PageAcceuil/lamour.png" alt="Trouver l'amour avec votre personnalité">
-                <h3>Trouver l'amour avec votre personnalité</h3>
+                <h3>Trouver l'amour en accord avec votre personnalité</h3>
             </div>
             <div class="image-container">
                 <img src="../Assets/PageAcceuil/local.png" alt="Trouver l'amour près de chez vous">
@@ -76,15 +68,21 @@ session_start();
             </div>
         </div>
         <div class="moderation-section">
-            <div class="text-container">
-                <h3 class="titremod">Modération et Anti-Harcèlement</h3>
-                <p class="textemod">Nous prenons très au sérieux la sécurité de nos utilisateurs. Notre équipe de modération travaille sans relâche pour prévenir et éliminer tout comportement inapproprié ou harcelant. Nous nous engageons à créer un environnement sûr et accueillant pour tous.</p>
-            </div>
-            
-            <div class="image-container2">
-                <img src="../Assets/PageAcceuil/moderation.png" alt="Modération et Anti-Harcèlement">
+        <div class="image-container2">
+                <img src="../Assets/PageAcceuil/moderateur.png" alt="Image 4">
+                <h3>Modération et Anti-Harcèlement</h3>
+                <p>Nous prenons très au sérieux la sécurité de nos utilisateurs. Notre équipe de modération travaille sans relâche pour prévenir et éliminer tout comportement inapproprié ou harcelant. Nous nous engageons à créer un environnement sûr et accueillant pour tous.</p>
             </div>
         </div>
     </div>
+
+    <div class="footer">
+            <a class="foot" href="Accueil.php">© 2024 PersonaliTree</a>
+            <a class="foot" href="Accueil.php">Conditions générales d'utilisation</a>
+            <a class="foot" href="Accueil.php">Régles de  communauté</a>
+            <div class="return">
+                <a class="foot" href="Accueil.php">▲ Retour en haut ▲</a>
+            </div>
+        </div>
 </body>
 </html>
