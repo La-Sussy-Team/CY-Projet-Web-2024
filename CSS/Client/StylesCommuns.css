@@ -6,7 +6,7 @@
 	--couleur-beige: #FEFFFB;
 	--couleur-gris: #222626;
 	--marron-fonce: #813A26;
-    --marron-clair: #d39582;
+    	--marron-clair: #d39582;
 	--beige: #FDE4DB;
 	
 }
@@ -71,7 +71,7 @@ form{
 input[type='submit']{
     width: 20vw;
     padding: 8px;
-    background-color: var(--couleur-principale);
+    background-color: var(--couleur-secondaire);
     color: white;
     border: none;
     border-radius: 5px;
@@ -80,7 +80,7 @@ input[type='submit']{
 	font-size: 1vw;
 }
 input[type='submit']:hover{
-    background-color: var(--couleur-secondaire);
+    background-color: var(--couleur-red);
 }
 h1{
 	font-size: 2.5vw;
