@@ -160,7 +160,8 @@ $messages = recupererMessages($con, $user_id, $other_user_id);
 
 
     .messages {
-        max-width: 25vw;
+        height: 60vh;
+        width: 25vw;
         margin: 0 auto;
         padding: 20px;
         background-color: #f7f7f7;
