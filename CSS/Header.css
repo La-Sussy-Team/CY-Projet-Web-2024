@@ -36,6 +36,15 @@ ul.inter {
     margin-left: 40px;
 }
 
+.logotop {
+    height: 18rem; 
+    width: 18rem; 
+    margin: 0 auto; 
+    margin-top: 5%;
+    display: block; 
+}
+
+
 header {
     background-color: white;
     position: fixed;
@@ -56,6 +65,7 @@ header ul li a {
 header * {
     display: inline-flex;
     margin: auto;
+    align-items: center;
 }
 
 header li {
@@ -123,4 +133,20 @@ header li a {
 
 .return{
     float: right;
+}
+
+.plusG{
+    text-decoration: none;
+    color: #813A26;
+    margin-bottom: 0;
+    padding: 20px;
+    font-size: 15px;
+    transition: 0.3s;
+    font-family: Montserrat, sans-serif; 
+    font-weight: bold;
+}
+
+.plusG:hover{
+    font-size: 16px;
+    color: #6CA546;
 }

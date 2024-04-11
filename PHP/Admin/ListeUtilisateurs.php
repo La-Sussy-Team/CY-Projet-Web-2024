@@ -30,6 +30,7 @@ include "Header.php";
                 <p><?php echo $user['sexe'] ?></p>
                 <p>Est abonné : <?php echo $user['isSub'] ? 'Oui' : 'Non' ?></p>
                 <p>Est admin : <?php echo $user['isAdmin'] ? 'Oui' : 'Non' ?></p>
+                <p>Est banni : <?php echo $user['isBanned'] ? 'Oui' : 'Non' ?></p>
                 <p>
                     <a href="GestionUtilisateur.php?username=<?php echo urlencode($user['username']); ?>">
                         <button>Gérer Profil</button>

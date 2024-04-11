@@ -1,0 +1,20 @@
+.master{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-color: white;
+    max-width: 40vw;
+}
+.login-container img{
+    margin: auto;
+}

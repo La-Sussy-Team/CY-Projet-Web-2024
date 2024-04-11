@@ -13,6 +13,9 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script src="../../JS/Client/Inscription.js"></script>
 </head>
+<?php
+include "Header.php";
+?>
 <body>
     <div class="overlay" id="overlay"></div>
 	<div class="ilotValider" id="ilotValider">
@@ -74,6 +77,8 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
                 <option value="Femme">Femme</option>
                 <option value="Autre">Autre</option>
             </select>
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="date" name="dateNaissance" id="dateNaissance" required>
             <button class="prev">Précédent</button>
             <button class="next">Suivant</button>
         </div>
@@ -88,6 +93,16 @@ $countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua
             <input type="text" name="ville" id="ville" required>
             <label for="adresse">Adresse :</label>
             <input type="text" name="adresse" id="adresse" required>
+            <button class="prev">Précédent</button>
+            <button class="next">Suivant</button>
+        </div>
+        <div class="step" id="step5">
+            <label for="bio">Biographie :</label>
+            <textarea name="bio" id="bio" required></textarea>
+            <label for="interets">Centres d'intérêts :</label>
+            <input type="text" id="interets" placeholder="Appuyer sur Entrer pour ajouter le centre d'intérêt" required>
+            <ul id="keywords"></ul>
+            <input type="hidden" name="interets" id="hiddenInterests">
             <button class="prev">Précédent</button>
             <button class="send" id="send">S'inscrire</button>
         </div>

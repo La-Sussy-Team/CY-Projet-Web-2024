@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "BackEnd/VerificationConnexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" href="../../CSS/Client/PageAccueil.css">
     <link rel="stylesheet" href="../../CSS/Header.css">
     <link rel="stylesheet" href="../../CSS/Client/RechercheProfils.css">
+    <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
     <link rel="icon" href="../../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
 </head>
@@ -17,19 +18,24 @@ include "Header.php";
 ?>
 <body>
     <div class="filter-bar" id="filter-bar">
-        <p style="text-align: center;">Filtrez votre recherche</p>
+        <h3 style="text-align: center;">Filtrez votre recherche</h3>
         <div class="deroulant">
         <form method="post">
-         <div class="info-general">
+        <div class="info-general">
             <input type="text" class="filter-searchbar" placeholder="Nom" name="search-nom">
             <input type="text" class="filter-searchbar" placeholder="Ville" name="search-ville">
             <input type="text" class="filter-searchbar" placeholder="Pays" name="search-pays">
-         </div>
-         <div class="sex">
+        </div>
+        <div class="sex">
             <input type="checkbox" class="checkbox-sex" name="sex1" value="Homme"> <label for="sex1">Homme</label>
             <input type="checkbox" class="checkbox-sex" name="sex2" value="Femme"> <label for="sex2">Femme</label>
-            <input type="checkbox" class="sex3" name="sex3" value="Autre"> <label for="sex3">Autre</label>
-         </div>
+            <input type="checkbox" class="checkbox-sex" name="sex3" value="Autre"> <label for="sex3">Autre</label>
+        </div>
+        <div class="desc">
+            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés (séparés avec un '~')">
+            <input type="number" class="filter-age-min" name="age-min" placeholder="Age minimum">
+            <input type="number" class="filter-age-max" name="age-max" placeholder="Age maximum">
+        </div>
     <button name="submit">Rechercher</button>
 </form>
 </div>
@@ -49,12 +55,14 @@ include "Header.php";
 </div>
 <div class="result">
 <table class="table">
-
     <?php
         include 'BackEnd/LoginDatabase.php';
-        $nom="²";
-        $ville="²";
-        $pays="²";
+        $nom=null;
+        $ville=null;
+        $pays=null;
+        $keyword=null;
+        $agemin=0;
+        $agemax=200;
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
@@ -74,7 +82,22 @@ include "Header.php";
             }else {
                 $sexe3="";
             }
+            if($sexe1=="" && $sexe2=="" && $sexe3==""){
+                $sexe1="Homme";
+                $sexe2="Femme";
+                $sexe3="Autre";
             }
+            if(isset($_POST['desc'])){
+            $keyword= explode("~",$_POST['desc']);
+            }
+            if($_POST['age-min']!=""){
+                $agemin= $_POST['age-min'];
+            }
+            if($_POST['age-max']!=""){
+                $agemax= $_POST['age-max'];
+            }
+            }
+            
             if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ? and ville LIKE ? and (sexe=? or sexe=? or sexe=?) and pays LIKE ?')) {
                 $nom = "%" . $nom . "%";
                 $ville = "%" . $ville . "%";
@@ -84,20 +107,54 @@ include "Header.php";
                 $result = $stmt->get_result();
                 $profil = $result->fetch_all(MYSQLI_ASSOC);
             }
-                echo("<h3> il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
+            if($agemin>$agemax){
+                echo("<h3> L'age demandé n'est pas valide </h3>");
+            } else {
+                echo("<h3> Voici les résultats correspondant à vos critères </h3>");
                 ?>
-                <div class="display-result"></div>
+                <div class="display-result">
                 <?php
             foreach($profil as $prof){
+                $verif=1;
+                if($keyword["0"]!=""){
+                    if(sizeof($keyword)!=0){
+                        foreach($keyword as $word){
+                            if($prof['interets']!=null){
+                                if(strpos($prof['interets'],$word)==false || $prof['interets']==null){
+                                $verif=0;
+                                }
+                            } else if ($prof['interets']==null){
+                                $verif=0;
+                            }
+                        }
+                    }
+                }
+                if($prof['dateNaissance']!=null){
+                    $birthdate = new DateTime($prof['dateNaissance']);
+                    $today = new DateTime('today');
+                    $age = $birthdate->diff($today)->y;
+                    if($agemin>$age || $agemax<$age ){
+                        
+                        $verif=0;
+                    }
+                }
+                
+                if($verif==1){
                 echo('<div class="profil-trouvé">');
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
-                echo("<p>".$prof['prenom']." ".$prof['nom']."</p>");
-                echo("<p>".$prof['sexe']."</p>");
+                echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
+                echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
+                if($prof['dateNaissance']!=null){
+                echo("<p><u> Age:</u> ".$age." ans</p>");
+                }
                 echo("<p>".$prof['ville']."</p>");
                 echo("<p>".$prof['pays']."</p>");
                 echo("</div>");
-            }     
+                }
+            }
+            }
                 ?>
+                </div>
                 </div>
 </table>
 </div>
