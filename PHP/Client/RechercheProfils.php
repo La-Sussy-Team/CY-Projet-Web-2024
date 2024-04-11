@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" href="../../CSS/Client/PageAccueil.css">
     <link rel="stylesheet" href="../../CSS/Header.css">
     <link rel="stylesheet" href="../../CSS/Client/RechercheProfils.css">
+    <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
     <link rel="icon" href="../../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
 </head>
@@ -17,7 +18,7 @@ include "Header.php";
 ?>
 <body>
     <div class="filter-bar" id="filter-bar">
-        <p style="text-align: center;">Filtrez votre recherche</p>
+        <h3 style="text-align: center;">Filtrez votre recherche</h3>
         <div class="deroulant">
         <form method="post">
          <div class="info-general">
@@ -52,9 +53,9 @@ include "Header.php";
 
     <?php
         include 'BackEnd/LoginDatabase.php';
-        $nom="²";
-        $ville="²";
-        $pays="²";
+        $nom=null;
+        $ville=null;
+        $pays=null;
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
@@ -74,6 +75,11 @@ include "Header.php";
             }else {
                 $sexe3="";
             }
+            if($sexe1=="" && $sexe2=="" && $sexe3==""){
+                $sexe1="Homme";
+                $sexe2="Femme";
+                $sexe3="Autre";
+            }
             }
             if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ? and ville LIKE ? and (sexe=? or sexe=? or sexe=?) and pays LIKE ?')) {
                 $nom = "%" . $nom . "%";
@@ -84,20 +90,21 @@ include "Header.php";
                 $result = $stmt->get_result();
                 $profil = $result->fetch_all(MYSQLI_ASSOC);
             }
-                echo("<h3> il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
+                echo("<h3> Il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
                 ?>
-                <div class="display-result"></div>
+                <div class="display-result">
                 <?php
             foreach($profil as $prof){
                 echo('<div class="profil-trouvé">');
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
-                echo("<p>".$prof['prenom']." ".$prof['nom']."</p>");
-                echo("<p>".$prof['sexe']."</p>");
+                echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
+                echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
                 echo("<p>".$prof['ville']."</p>");
                 echo("<p>".$prof['pays']."</p>");
                 echo("</div>");
             }     
                 ?>
+                </div>
                 </div>
 </table>
 </div>
