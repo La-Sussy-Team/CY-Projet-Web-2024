@@ -32,7 +32,9 @@ include "Header.php";
             <input type="checkbox" class="checkbox-sex" name="sex3" value="Autre"> <label for="sex3">Autre</label>
         </div>
         <div class="desc">
-            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés"> 
+            <input type="text" class="filter-desc" name="desc" placeholder="Mots clés (séparés avec un '~')">
+            <input type="number" class="filter-age-min" name="age-min" placeholder="Age minimum">
+            <input type="number" class="filter-age-max" name="age-max" placeholder="Age maximum">
         </div>
     <button name="submit">Rechercher</button>
 </form>
@@ -59,6 +61,8 @@ include "Header.php";
         $ville=null;
         $pays=null;
         $keyword=null;
+        $agemin=0;
+        $agemax=200;
         if(isset( $_POST['submit'])) {
             $nom=$_POST['search-nom'];
             $ville=$_POST['search-ville'];
@@ -86,7 +90,14 @@ include "Header.php";
             if(isset($_POST['desc'])){
             $keyword= explode("~",$_POST['desc']);
             }
+            if($_POST['age-min']!=""){
+                $agemin= $_POST['age-min'];
             }
+            if($_POST['age-max']!=""){
+                $agemax= $_POST['age-max'];
+            }
+            }
+            
             if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id = infopersos.user_id WHERE nom LIKE ? and ville LIKE ? and (sexe=? or sexe=? or sexe=?) and pays LIKE ?')) {
                 $nom = "%" . $nom . "%";
                 $ville = "%" . $ville . "%";
@@ -96,7 +107,10 @@ include "Header.php";
                 $result = $stmt->get_result();
                 $profil = $result->fetch_all(MYSQLI_ASSOC);
             }
-                echo("<h3> Il y a ".sizeof($profil)." résultats correspondant à vos critères </h3>");
+            if($agemin>$agemax){
+                echo("<h3> L'age demandé n'est pas valide </h3>");
+            } else {
+                echo("<h3> Voici les résultats correspondant à vos critères </h3>");
                 ?>
                 <div class="display-result">
                 <?php
@@ -115,6 +129,16 @@ include "Header.php";
                         }
                     }
                 }
+                if($prof['dateNaissance']!=null){
+                    $birthdate = new DateTime($prof['dateNaissance']);
+                    $today = new DateTime('today');
+                    $age = $birthdate->diff($today)->y;
+                    if($agemin>$age || $agemax<$age ){
+                        
+                        $verif=0;
+                    }
+                }
+                
                 if($verif==1){
                 echo('<div class="profil-trouvé">');
                 echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
@@ -125,7 +149,7 @@ include "Header.php";
                 echo("</div>");
                 }
             }
-              
+            }
                 ?>
                 </div>
                 </div>
