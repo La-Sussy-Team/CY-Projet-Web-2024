@@ -12,23 +12,27 @@ session_start();
     <title>PersonaliTree - Rencontre par affinité naturelle</title>
 </head>
 <body>
-    <header>
+<header>
         <a href="./Accueil.php"><img class="logo" src="../Assets/Logo/Logo_Fullscreen.png" alt=""></a>
         <ul class ="inter">
-            <li><a class="plusG" href="./Accueil.php">Accueil</a></li>
-            <li><a class="plusG" href="#">Découverte de Profils</a></li>
-            <li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>
             <?php
+            if (isset($_SESSION['username'])) {
+                echo '<li><a class="plusG" href="./Client/AccueilProfils.php">Accueil Profils</a></li>';
+                echo '<li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>';
+                echo '<li><a class="plusG" href="./Client/Conversation.php">Messagerie</a></li>';
+            } else {
+                echo '<li><a class="plusG" href="./Accueil.php">Accueil</a></li>';
+            }
             echo '<div class="inter">';
             if (isset($_SESSION['username'])) {
                 if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
-                    echo '<li><a class="button" href="./Admin/AccueilAdmin.php"><img class="accAdmin" src="../Assets/Logo/admin.png">Accueil Admin</a><li>';
+                    echo '<li><a class="button plusG" href="./Admin/AccueilAdmin.php"><img class="accAdmin" src="../Assets/Logo/admin.png">Accueil Admin</a><li>';
                 }
-                echo '<li><a class="button" href="./Client/MonProfil.php"><img class="accAdmin" src="../Assets/Logo/myProfile.png">Mon Profil</a><li>';
-                echo '<li><a class="button" href="./Client/BackEnd/Deconnexion.php"><img class="accAdmin" src="../Assets/Logo/logout.png">Déconnexion</a><li>';
+                echo '<li><a class="button plusG" href="./Client/MonProfil.php"><img class="accAdmin" src="../Assets/Logo/myProfile.png">Mon Profil</a><li>';
+                echo '<li><a class="button plusG" href="./Client/BackEnd/Deconnexion.php"><img class="accAdmin" src="../Assets/Logo/logout.png">Déconnexion</a><li>';
             } else {
-                echo '<li><a class="button" href="./Client/Inscription.php"><img class="accAdmin" src="../Assets/Logo/register.png">Inscription</a><li>';
-                echo '<li><a class="button" href="./Client/Connexion.php"><img class="accAdmin" src="../Assets/Logo/myProfile.png">Connexion</a><li>';
+                echo '<li><a class="button plusG" href="./Client/Inscription.php"><img class="accAdmin" src="../Assets/Logo/register.png">Inscription</a><li>';
+                echo '<li><a class="button plusG" href="./Client/Connexion.php"><img class="accAdmin" src="../Assets/Logo/myProfile.png">Connexion</a><li>';
             }
             echo '</div>';
             ?>
