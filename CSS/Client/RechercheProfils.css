@@ -50,6 +50,15 @@ header{
     flex-wrap: wrap;
 }
 
+.flexer {
+    margin-top: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.recom{
+    margin-top: 5vw;
+}
 
 .profil-trouvé{
     cursor: pointer;

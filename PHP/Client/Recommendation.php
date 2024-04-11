@@ -62,12 +62,14 @@ include "Header.php";
 
             ?>
 
-            <h1>Recommendations de profils</h1>
+            <h1 class="recom">Recommendations de profils</h1>
             
 
             <?php
                 $agemin=0;
                 $agemax=200;
+                echo('<div class="flexer"> ');
+                
                 foreach ($closest_users as $user) {
                     $id = $user['id'];
 
@@ -96,6 +98,7 @@ include "Header.php";
                     echo("<p>".$prof['pays']."</p>");
                     echo("</div>");
                 }
+                echo("</div>");
             ?>
         </table>
     </div>
