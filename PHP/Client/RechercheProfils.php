@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "BackEnd/VerificationConnexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,16 +20,16 @@ include "Header.php";
         <p style="text-align: center;">Filtrez votre recherche</p>
         <div class="deroulant">
         <form method="post">
-         <div class="info-general">
+        <div class="info-general">
             <input type="text" class="filter-searchbar" placeholder="Nom" name="search-nom">
             <input type="text" class="filter-searchbar" placeholder="Ville" name="search-ville">
             <input type="text" class="filter-searchbar" placeholder="Pays" name="search-pays">
-         </div>
-         <div class="sex">
+        </div>
+        <div class="sex">
             <input type="checkbox" class="checkbox-sex" name="sex1" value="Homme"> <label for="sex1">Homme</label>
             <input type="checkbox" class="checkbox-sex" name="sex2" value="Femme"> <label for="sex2">Femme</label>
             <input type="checkbox" class="sex3" name="sex3" value="Autre"> <label for="sex3">Autre</label>
-         </div>
+        </div>
     <button name="submit">Rechercher</button>
 </form>
 </div>
@@ -49,7 +49,6 @@ include "Header.php";
 </div>
 <div class="result">
 <table class="table">
-
     <?php
         include 'BackEnd/LoginDatabase.php';
         $nom="²";

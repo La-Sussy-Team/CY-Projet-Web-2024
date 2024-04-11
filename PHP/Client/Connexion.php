@@ -1,23 +1,24 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin'])) {
+if (isset($_SESSION['username'])) {
     header('Location: AccueilProfils.php');
     exit;
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
         include 'BackEnd/LoginDatabase.php';
-        if ($stmt = $con->prepare('SELECT password, isAdmin, isSub FROM login WHERE username = ?')) {
+        if ($stmt = $con->prepare('SELECT password, isAdmin, isSub, isBanned FROM login WHERE username = ?')) {
             $stmt->bind_param('s', $_POST['username']);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($password, $isAdmin, $isSub);
+                $stmt->bind_result($password, $isAdmin, $isSub, $isBanned);
                 $stmt->fetch();
                 if (password_verify($_POST['password'], $password)) {
                     session_regenerate_id();
                     $_SESSION['username'] = $_POST['username'];
                     $_SESSION['isAdmin'] = $isAdmin;
                     $_SESSION['isSub'] = $isSub;
+                    $_SESSION['isBanned'] = $isBanned;
                     header('Location: AccueilProfils.php');
                     exit();
                 } else {
