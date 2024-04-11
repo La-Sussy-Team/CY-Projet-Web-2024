@@ -28,7 +28,9 @@
         }
     </script>
 </head>
-
+<?php
+        include "Header.php";
+    ?>
 <body>
 
     <div class="container">
@@ -50,7 +52,7 @@
                 </div>
                 <div class="int_a">
                     <!-- Appel de la fonction confirmerAbonnement() lors du clic sur le lien -->
-                    <a class="button" href="#" onclick="confirmerAbonnement()">S'abonner</a>
+                    <a class="buttonsub" href="#" onclick="confirmerAbonnement()">S'abonner</a>
                 </div>
             </div>
         </div>
