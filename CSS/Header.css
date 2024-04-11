@@ -65,6 +65,7 @@ header ul li a {
 header * {
     display: inline-flex;
     margin: auto;
+    align-items: center;
 }
 
 header li {
