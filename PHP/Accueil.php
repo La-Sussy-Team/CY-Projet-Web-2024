@@ -19,6 +19,7 @@ session_start();
             if (isset($_SESSION['username'])) {
                 echo '<li><a class="plusG" href="./Client/AccueilProfils.php">Accueil Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>';
+                echo '<li><a class="plusG" href="./recommendation.php">Recommendations de Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/Conversation.php">Messagerie</a></li>';
             } else {
                 echo '<li><a class="plusG" href="./Accueil.php">Accueil</a></li>';
@@ -89,7 +90,5 @@ session_start();
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>
