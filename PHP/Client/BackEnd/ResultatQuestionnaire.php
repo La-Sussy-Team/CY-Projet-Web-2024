@@ -1,5 +1,5 @@
 <?php
-include "./VerificationConnexion.php";
+session_start();
 include './LoginDatabase.php';
 if (!isset($_POST['q1']) || !isset($_POST['q2']) || !isset($_POST['q3']) || !isset($_POST['q4']) || !isset($_POST['q5']) || !isset($_POST['q6']) || !isset($_POST['q7'])) {
     header("Location: ../Questionnaire.php");
@@ -148,6 +148,7 @@ if (!isset($_POST['q1']) || !isset($_POST['q2']) || !isset($_POST['q3']) || !iss
             $stmt->execute();
             $stmt->close();
             $con->close();
+            $_SESSION['questionnaire'] = 1;
             header("Location: ../MonProfil.php");
             exit();
         } else {

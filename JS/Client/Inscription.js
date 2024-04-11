@@ -312,7 +312,7 @@ $(document).ready(function() {
         void validationAnimation.offsetWidth;
         validationAnimation.classList.add("checkmark");
         setTimeout(() => {
-            window.location.href = "./../Questionnaire.php";
+            window.location.href = "./Connexion.php";
         }, 9000); 
     }
 });

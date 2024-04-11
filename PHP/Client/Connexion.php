@@ -6,12 +6,12 @@ if (isset($_SESSION['username'])) {
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
         include 'BackEnd/LoginDatabase.php';
-        if ($stmt = $con->prepare('SELECT password, isAdmin, isSub, isBanned FROM login WHERE username = ?')) {
+        if ($stmt = $con->prepare('SELECT id, password, isAdmin, isSub, isBanned FROM login WHERE username = ?')) {
             $stmt->bind_param('s', $_POST['username']);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($password, $isAdmin, $isSub, $isBanned);
+                $stmt->bind_result($id, $password, $isAdmin, $isSub, $isBanned);
                 $stmt->fetch();
                 if (password_verify($_POST['password'], $password)) {
                     session_regenerate_id();
@@ -19,6 +19,20 @@ if (isset($_SESSION['username'])) {
                     $_SESSION['isAdmin'] = $isAdmin;
                     $_SESSION['isSub'] = $isSub;
                     $_SESSION['isBanned'] = $isBanned;
+                    if ($stmt = $con->prepare('SELECT * FROM relationplante WHERE id = ?')) {
+                        $stmt->bind_param('i', $id);
+                        $stmt->execute();
+                        $stmt->store_result();
+                        if ($stmt->num_rows > 0) {
+                            $_SESSION['questionnaire'] = 1;
+                            } else {
+                            $_SESSION['questionnaire'] = 0;
+                        }
+                    } else {
+                        $_SESSION['error'] = 1; //erreur base de données
+                        header('Location: Connexion.php');
+                        exit();
+                    }
                     header('Location: AccueilProfils.php');
                     exit();
                 } else {
