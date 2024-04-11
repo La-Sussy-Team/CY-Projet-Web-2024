@@ -66,7 +66,9 @@ include "Header.php";
                 ?>
                 <input type="submit" value="Connexion">
             </form>
-            <a href="Inscription.php">Pas encore inscrit ? <b>Inscrivez-vous gratuitement !</b></a>
+            <div class="inscr">
+                <a href="Inscription.php">Pas encore inscrit ? <b>Inscrivez-vous gratuitement !</b></a>
+            </div>
         </div>
     </div>
 </body>
