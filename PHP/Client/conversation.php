@@ -84,7 +84,7 @@ if ($stmt) {
                 ?>
                 <div class="conversation-module" onclick="window.location='get_messages.php?user_id=<?php echo $user_id ?>&other_user_id=<?php echo $other_user_id; ?>'" > 
                     <img src="../../../Assets/Client/ProfileImage/<?php echo $image_other_user; ?>" alt="Profile Image">
-                    <li><a href="get_messages.php?user_id=<?php echo $user_id ?>&other_user_id=<?php echo $other_user_id; ?>"><?php echo htmlspecialchars($other_username); ?></a></li>
+                    <p ><?php echo htmlspecialchars($other_username); ?></p>
                     <p>Dernier message : <?php echo htmlspecialchars($last_message); ?></p>
                 </div>
         <?php endforeach; ?>
