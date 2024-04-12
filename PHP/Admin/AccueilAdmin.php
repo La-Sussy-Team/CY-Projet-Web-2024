@@ -17,7 +17,6 @@ include "Header.php";
 <body>
     <div style="display:flex; flex-direction:column; text-align:center; position:relative; top: 8vh;">
         <h1>Bienvenue dans le paneau de gestion administrateur</h1>
-        <h3>Choisissez une catégorie dans le menu ci-dessus</h3>
         <h2>Statistiques actuelles du site</h2>
         <p>Nombre d'utilisateurs inscrits : <?php
         if ($stmt = $con->prepare('SELECT COUNT(*) FROM login')){

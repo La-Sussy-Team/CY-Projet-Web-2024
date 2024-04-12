@@ -105,7 +105,7 @@ include "Header.php";
                     <h2 style="text-align: center;"><?php echo($plante['plante']) ?></h2>
                 </div>
                 <div class="img-plant">
-                    <?php echo("<img src='../../Assets/Client/Plante/".$plante['imgpath']." width='180' height='180' style='margin-left:20%;'>"); ?>
+                    <?php echo("<img src='../../Assets/Client/Plante/".$plante['imgpath']."' width='180' height='180' style='margin-left:20%;'>"); ?>
                 </div>
             </div>
         </div>
