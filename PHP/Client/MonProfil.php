@@ -36,20 +36,22 @@ include "Header.php";
             </div>
             <div class="profile-info">
                 <div class="identity">
-                    <h3><?php echo ($user['prenom']." ".$user['nom']); ?></h3>
+                    <b><u><h3><?php echo ($user['prenom']." ".$user['nom']); ?></h3></u></b>
                 </div>
                 <div class="info">
-                    <p>Tel: <?php echo $user['phone']; ?></p>
-                    <p>Sexe: <?php echo $user['sexe']; ?></p>
-                    <p>Pays: <?php echo $user['pays']; ?></p>
-                    <p>Ville: <?php echo $user['ville']; ?></p>
-                    <p>Ville: <?php echo $user['ville']; ?></p>
+                    <p><u>Tel:</u> <?php echo $user['phone']; ?></p>
+                    <p><u>Sexe:</u> <?php echo $user['sexe']; ?></p>
+                    <p><u>Date de naissance:</u> <?php echo $user['dateNaissance']; ?></p>
+                    <p><u>Pays:</u> <?php echo $user['pays']; ?></p>
+                    <p><u>Ville:</u> <?php echo $user['ville']; ?></p>
+                    <p><u>Centre d'intérets:</u> <?php echo str_replace("~"," - ",$user['interets']); ?></p>
 
                 </div>
             </div>
         </div>
         <div class="profile-mid">
-            <p>Tel: <?php echo $user['bio']; ?></p>
+        <u><h1 style="text-align: center;">Description</h1></u>
+            <p><?php echo $user['bio']; ?></p>
         </div>
         <div class="profile-bot">
             <div class="desc-plant">
@@ -57,10 +59,10 @@ include "Header.php";
             </div>
             <div class="id-plant">
                 <div class="nom-plant">
-                <p>a l'aide</p>
+                <p>nom plante</p>
                 </div>
                 <div class="img-plant">
-                <p>a</p>
+                <p> image plant</p>
                 </div>
             </div>
         </div>
