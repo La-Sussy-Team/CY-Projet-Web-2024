@@ -21,7 +21,7 @@ function calculateCompatibility($distance) {
     <link rel="stylesheet" href="../../CSS/Client/RechercheProfils.css">
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
     <link rel="icon" href="../../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Rencontre par affinité naturelle</title>
+    <title>PersonalyTree - Rencontre par affinité naturelle</title>
 </head>
 <?php
 include "Header.php";
@@ -46,7 +46,9 @@ include "Header.php";
                 while ($row = mysqli_fetch_assoc($result)) {
                     if ($row['x'] != null && $row['y'] != null){
                         $distance = sqrt(pow($row['x'] - $current_user_x, 2) + pow($row['y'] - $current_user_y, 2));
-                        $distances[] = array('id' => $row['id'], 'distance' => $distance);
+                        if ($distance != 0){
+                            $distances[] = array('id' => $row['id'], 'distance' => $distance);
+                        }
                     }
                 }
                 usort($distances, function($a, $b) {

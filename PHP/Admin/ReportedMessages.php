@@ -12,7 +12,7 @@ if ($stmt = $con->prepare('SELECT m.id AS message_id, m.sender_id, m.receiver_id
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-    <title>Personalytree - Administration</title>
+    <title>PersonalyTree - Administration</title>
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
     <link rel="stylesheet" href="../../CSS/Admin/ReportedMessages.css">
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
