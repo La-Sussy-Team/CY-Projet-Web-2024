@@ -1,8 +1,13 @@
 <?php
 include "./BackEnd/VerificationConnexion.php";
 include './BackEnd/LoginDatabase.php';
+if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+} else {
+    $username = $_SESSION['username'];
+}
 if ($stmt = $con->prepare('SELECT * FROM login WHERE username = ?')) {
-    $stmt->bind_param('s', $_SESSION['username']);
+    $stmt->bind_param('s', $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $login = $result->fetch_assoc();
@@ -13,11 +18,7 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 }
-if (isset($_POST['username'])) {
-    $username = $_POST['username'];
-} else {
-    $username = $_SESSION['username'];
-}
+
 
 $other_user_isSub = 0;
 if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
