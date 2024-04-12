@@ -13,6 +13,18 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 }
+
+$username = $_POST['username'];
+
+$other_user_isSub = 0;
+if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $other_user_isSub = $row['isSub'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,7 +44,19 @@ include "Header.php";
         <div class="profile-top">
             <div class="profile-pic">
                 <img id="profilePic" src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>">
-                <button class="contact-button" name="me contacter">
+                <?php
+                if ($_SESSION['isSub'] != 0 && $other_user_isSub!=0) {
+                echo '
+                    <form method="POST" action="create_conversation.php">
+                        <input type="hidden" name="username2" value="' . $_SESSION['username'] . '">
+                        <input type="hidden" name="username" value="' . $username . '">
+                        <button type="submit">Créer la conversation</button>
+                    </form>
+                ';
+                }
+                ?>
+                </form>
+                ?>
             </div>
             <div class="profile-info">
                 <div class="identity">

@@ -19,10 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param('s', $username);
             $stmt->execute();
             $stmt->store_result();
+            
             if ($stmt->num_rows > 0) {
                 $stmt->bind_result($user2_id);
                 $stmt->fetch();
                 $stmt->close();
+                $sql = 'SELECT id FROM conversation WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)';
+                $stmt = $con->prepare($sql);
+                if ($stmt) {
+                    $stmt->bind_param('iiii', $user1_id, $user2_id, $user2_id, $user1_id);
+                    $stmt->execute();
+                    $stmt->store_result();
+                    if ($stmt->num_rows > 0) {
+                        header('Location: conversation.php');
+                        $stmt->close();
+                        exit;
+                    }
+                }
                 $sql = 'INSERT INTO conversation (user1_id, user2_id) VALUES (?, ?)';
                 $stmt = $con->prepare($sql);
                 if ($stmt) {
@@ -50,4 +63,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Le formulaire doit être soumis via POST.";
 }
+
 ?>
