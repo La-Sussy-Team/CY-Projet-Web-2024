@@ -56,7 +56,7 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Connexion</title>
+    <title>PersonalyTree - Connexion</title>
     <link rel="stylesheet" href="../../CSS/Client/LoginContainer.css">
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
 </head>
