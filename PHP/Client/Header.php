@@ -9,6 +9,7 @@
             echo '<li><a class="plusG" href="./Recommendation.php">Recommendations de Profils</a></li>';
             if (isset($_SESSION['isSub']) && $_SESSION['isSub'] == 1 && isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
                 echo '<li><a class="plusG" href="./Conversation.php">Messagerie</a></li>';
+                echo '<li><a class="plusG" href="./Consultation.php">Consultation</a></li>';
             } else if (isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
                 echo '<li><a class="plusG" href="./OffreEtAbonnement.php">Abonnement</a></li>';
             }

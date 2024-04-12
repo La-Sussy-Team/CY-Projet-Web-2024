@@ -46,19 +46,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 $listeIds = implode(",", $distances);
-
 $query = "SELECT infopersos.*, login.username FROM infopersos JOIN login ON infopersos.user_id = login.id WHERE user_id IN ($listeIds)";
-
 $result = mysqli_query($con, $query);
-
-foreach ($distances as $user) {
-    $id = $user;
-    echo($id);
-}
     
     foreach ($distances as $user) {      
         $id = $user;
-        //echo($id);
         $query = "SELECT infopersos.*, login.username FROM infopersos JOIN login ON infopersos.user_id = login.id WHERE user_id = '$id'";
 
         $result = mysqli_query($con, $query);
