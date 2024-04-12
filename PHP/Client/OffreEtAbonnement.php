@@ -50,13 +50,10 @@ include "./BackEnd/VerificationConnexion.php"
                     <p>+ Bloquer des utilisateurs</p>
                 </div>
                 <div class="int_a">
-                    <!-- Appel de la fonction confirmerAbonnement() lors du clic sur le lien -->
                     <a class="buttonsub" href="#" onclick="confirmerAbonnement()">S'abonner</a>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
-
 </html>

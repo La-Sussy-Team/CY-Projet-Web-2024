@@ -63,5 +63,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Le formulaire doit être soumis via POST.";
 }
-
 ?>

@@ -29,19 +29,19 @@ if (isset($_SESSION['username'])) {
                             $_SESSION['questionnaire'] = 0;
                         }
                     } else {
-                        $_SESSION['error'] = 1; //erreur base de données
+                        $_SESSION['error'] = 1;
                         header('Location: Connexion.php');
                         exit();
                     }
                     header('Location: AccueilProfils.php');
                     exit();
                 } else {
-                    $_SESSION['error'] = 1; //erreur mauvais mot de passe
+                    $_SESSION['error'] = 1;
                     header('Location: Connexion.php');
                     exit();
                 }
             } else {
-                $_SESSION['error'] = 1; //erreur pas de compte
+                $_SESSION['error'] = 1;
                 header('Location: Connexion.php');
                 exit();
             }

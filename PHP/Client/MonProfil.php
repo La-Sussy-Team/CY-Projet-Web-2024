@@ -18,7 +18,6 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 }
-
 if ($stmt = $con->prepare('SELECT * FROM login WHERE username = ?')) {
     $stmt->bind_param('s', $_SESSION['username']);
     $stmt->execute();
@@ -31,7 +30,6 @@ if ($_SESSION['username'] != $username) {
         $stmt->execute();
     }
 }
-
 $other_user_isSub = 0;
 if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
     $stmt->bind_param('s', $username);
@@ -40,21 +38,18 @@ if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
     $row = $result->fetch_assoc();
     $other_user_isSub = $row['isSub'];
 }
-
 if ($stmt = $con->prepare('SELECT * FROM relationplante WHERE id = ?')) {
     $stmt->bind_param('i', $login['id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $plantid = $result->fetch_assoc();
 }
-
 if ($stmt = $con->prepare('SELECT * FROM plante WHERE id = ?')) {
     $stmt->bind_param('i', $plantid['id_plante']);
     $stmt->execute();
     $result = $stmt->get_result();
     $plante = $result->fetch_assoc();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
