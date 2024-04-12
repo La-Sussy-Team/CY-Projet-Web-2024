@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Client/OffreEtAbonnement.css">
-    <title>PersonaliTree - Rencontre par affinité naturelle</title>
+    <title>PersonalyTree - Rencontre par affinité naturelle</title>
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
     <script>
         function confirmerAbonnement() {
@@ -41,7 +41,7 @@
                 </div>
                 <div class="separator"></div>
                 <div class="int_h1">
-                    <h1>Pour profiter de toutes les fonctionnalités de PersonaliTree n'attendez plus et souscrivez tout de suite à un abonnement</h1>
+                    <h1>Pour profiter de toutes les fonctionnalités de PersonalyTree n'attendez plus et souscrivez tout de suite à un abonnement</h1>
                 </div>
                 <div class="separator"></div>
                 <div class="int_p">
