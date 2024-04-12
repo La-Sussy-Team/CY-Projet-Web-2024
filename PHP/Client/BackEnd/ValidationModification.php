@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['tel']
                 $stmt->execute();
                 $stmt->close();
                 $con->close();
-                $response['success'] = 'Modification réussie 1';
+                $response['success'] = 'Modification réussie !';
                 echo json_encode($response);
                 exit();
             } else {
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'], $_POST['tel']
                 exit();
             }
         } else {
-            $response['success'] = 'Modification réussie 2';
+            $response['success'] = 'Modification réussie !';
             echo json_encode($response);
             exit();
         }
