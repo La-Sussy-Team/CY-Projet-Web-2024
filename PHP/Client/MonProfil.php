@@ -29,6 +29,20 @@ if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
     $other_user_isSub = $row['isSub'];
 }
 
+if ($stmt = $con->prepare('SELECT * FROM relationplante WHERE id = ?')) {
+    $stmt->bind_param('i', $login['id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $plantid = $result->fetch_assoc();
+}
+
+if ($stmt = $con->prepare('SELECT * FROM plante WHERE id = ?')) {
+    $stmt->bind_param('i', $plantid['id_plante']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $plante = $result->fetch_assoc();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -83,14 +97,12 @@ include "Header.php";
         </div>
         <div class="profile-bot">
             <div class="desc-plant">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum eveniet non ad amet atque, fugit dolor tenetur quam repellendus doloribus inventore, modi ipsa. Dolor, sapiente. Neque autem eaque cum modi.</p>
-            </div>
+                <p> <?php echo($plante['desciption']) ?></p>            </div>
             <div class="id-plant">
                 <div class="nom-plant">
-                <p>nom plante</p>
-                </div>
+                <h2 style="text-align: center;"><?php echo($plante['plante']) ?></h2>                </div>
                 <div class="img-plant">
-                <p> image plant</p>
+                <?php echo("<img src='../../Assets/Client/Plante/".$plante['plante']."'>"); ?>
                 </div>
             </div>
         </div>
