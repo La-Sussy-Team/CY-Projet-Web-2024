@@ -42,7 +42,7 @@ session_start();
     <div class="middle1">
         <div class="titredivtop">
             <img class="logotop" src="../Assets/Logo/Logo_Fullscreen.png" alt="">
-            <h2 class="titre-mid">PersonaliTree : Rencontre par affinité naturelle</h2>
+            <h2 class="titre-mid">PersonalyTree : Rencontre par affinité naturelle</h2>
             <h2 class="titre-mid2">Trouvez l'amour grâce aux plantes</h2>
         </div>
         <div class="image-grid">
@@ -82,7 +82,7 @@ session_start();
             </div>
         </div>
         <div class="footer">
-            <a class="foot" href="Accueil.php">© 2024 PersonaliTree</a>
+            <a class="foot" href="Accueil.php">© 2024 PersonalyTree</a>
             <a class="foot" href="Accueil.php">Conditions générales d'utilisation</a>
             <a class="foot" href="Accueil.php">Régles de  communauté</a>
             <div class="return">
