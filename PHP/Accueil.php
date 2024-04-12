@@ -20,7 +20,11 @@ session_start();
                 echo '<li><a class="plusG" href="./Client/AccueilProfils.php">Accueil Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/Recommendation.php">Recommendations de Profils</a></li>';
-                echo '<li><a class="plusG" href="./Client/Conversation.php">Messagerie</a></li>';
+                if (isset($_SESSION['isSub']) && $_SESSION['isSub'] == 1 && isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
+                    echo '<li><a class="plusG" href="./Conversation.php">Messagerie</a></li>';
+                } else if (isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
+                    echo '<li><a class="plusG" href="./OffreEtAbonnement.php">Abonnement</a></li>';
+                }
             } else {
                 echo '<li><a class="plusG" href="./Accueil.php">Accueil</a></li>';
             }
