@@ -144,7 +144,7 @@ include "Header.php";
                 
                 if($verif==1){
                 echo('<div class="profil-trouvé">');
-                echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" length="200">');
+                echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" height="200">');
                 echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
                 echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
                 if($prof['dateNaissance']!=null){
