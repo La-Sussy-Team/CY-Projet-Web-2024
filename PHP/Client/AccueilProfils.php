@@ -14,7 +14,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
     <link rel="stylesheet" href="../../CSS/Client/AccueilProfils.css">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Accueil Profils</title>
+    <title>PersonalyTree - Accueil Profils</title>
     <script src="../../JS/Librairies/jquery-3.7.1.min.js">
 
     </script>
