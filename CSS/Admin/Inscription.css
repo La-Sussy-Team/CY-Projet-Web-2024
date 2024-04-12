@@ -15,6 +15,18 @@
     justify-content: space-evenly;
 }
 
+ul li button {
+    margin-left: 20px;
+}
+
+li::marker {
+    content: "";
+}
+
+textarea {
+    resize: vertical;
+}
+
 body{
     font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     background-color: #6CA546;
@@ -138,7 +150,7 @@ h2{
     cursor: pointer;
 }
 
-#username, #email, #password, #password2, #nom, #prenom, #adresse, #ville, #codePostal, #tel, #sexe, #pays, #currentPassword, #passwordConfirmation {
+#username, #email, #password, #password2, #nom, #prenom, #adresse, #ville, #codePostal, #tel, #sexe, #pays, #currentPassword, #passwordConfirmation, #dateNaissance, #bio, #interets {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;

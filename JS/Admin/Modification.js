@@ -44,6 +44,39 @@ $(document).ready(function() {
             $("#nom").removeClass("invalid").addClass("valid");
         }
     });
+    $("#dateNaissance").blur(function() {
+        var input=$(this);
+        var dateNaissance=input.val();
+        $("#dateNaissance").next(".error").remove();
+        if(dateNaissance.length > 10 || !/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(dateNaissance) || new Date(dateNaissance) > new Date() || new Date(dateNaissance) < new Date("1900-01-01")){
+            $("#dateNaissance").removeClass("valid").addClass("invalid");
+            $("#dateNaissance").after("<span class='error'>Date de naissance invalide</span>");
+        } else {
+            $("#dateNaissance").removeClass("invalid").addClass("valid");
+        }
+    });
+    $("#bio").blur(function() {
+        var input=$(this);
+        var bio=input.val();
+        $("#bio").next(".error").remove();
+        if(bio.length > 999){
+            $("#bio").removeClass("valid").addClass("invalid");
+            $("#bio").after("<span class='error'>La bio ne doit pas dépasser 1000 caractères</span>");
+        } else {
+            $("#bio").removeClass("invalid").addClass("valid");
+        }
+    });
+    $("#interets").blur(function() {
+        var input=$(this);
+        var interets=input.val();
+        $("#interets").next(".error").remove();
+        if(interets.length > 40){
+            $("#interets").removeClass("valid").addClass("invalid");
+            $("#interets").after("<span class='error'>Les intérêts ne doivent pas dépasser 40 caractères</span>");
+        } else {
+            $("#interets").removeClass("invalid").addClass("valid");
+        }
+    });
     $("#ville").blur(function() {
         var input=$(this);
         var ville=input.val();
@@ -79,10 +112,13 @@ $(document).ready(function() {
             formData.append('tel', document.getElementById('tel').value);
             formData.append('prenom', document.getElementById('prenom').value);
             formData.append('nom', document.getElementById('nom').value);
+            formData.append('dateNaissance', document.getElementById('dateNaissance').value);
             formData.append('sexe', document.getElementById('sexe').value);
             formData.append('pays', document.getElementById('pays').value);
             formData.append('ville', document.getElementById('ville').value);
             formData.append('adresse', document.getElementById('adresse').value);
+            formData.append('bio', document.getElementById('bio').value);
+            formData.append('interets', document.getElementById('hiddenInterests').value);
             if (fileField.files.length > 0) {
                 formData.append('profileImage', fileField.files[0]);
                 console.log("file added");
@@ -187,3 +223,50 @@ function loadFile(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
 }
+document.addEventListener('DOMContentLoaded', (event) => {
+    var input = document.getElementById('interets');
+    var list = document.getElementById('keywords');
+    var hiddenInput = document.getElementById('hiddenInterests');
+    var keywords = hiddenInput.value.split('~');
+    keywords.forEach(function(keyword) {
+        var li = document.createElement('li');
+        li.textContent = keyword;
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'X';
+        deleteButton.onclick = function() {
+            var index = keywords.indexOf(keyword);
+            if (index !== -1) {
+                keywords.splice(index, 1);
+                hiddenInput.value = keywords.join('~');
+                list.removeChild(li);
+            }
+        };
+        li.appendChild(deleteButton);
+        list.appendChild(li);
+    });
+    input.onkeydown = function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            var keyword = input.value.trim();
+            if (keyword && keyword.length <= 40) {
+                keywords.push(keyword);
+                var li = document.createElement('li');
+                li.textContent = keyword;
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = 'X';
+                deleteButton.onclick = function() {
+                    var index = keywords.indexOf(keyword);
+                    if (index !== -1) {
+                        keywords.splice(index, 1);
+                        hiddenInput.value = keywords.join('~');
+                        list.removeChild(li);
+                    }
+                };
+                li.appendChild(deleteButton);
+                list.appendChild(li);
+                input.value = '';
+                hiddenInput.value = keywords.join('~');
+            }
+        }
+    };
+});
