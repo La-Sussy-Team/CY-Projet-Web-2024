@@ -61,7 +61,7 @@ include "Header.php";
                 echo('<div class="flexer"> ');
                 foreach ($closest_users as $user) {
                     $id = $user['id'];
-                    $query = "SELECT * FROM infopersos WHERE user_id = '$id'";
+                    $query = "SELECT infopersos.*, login.username FROM infopersos JOIN login ON infopersos.user_id = login.id WHERE user_id = '$id'";
                     $result = mysqli_query($con, $query);
                     $prof = mysqli_fetch_assoc($result);
                     if($prof['dateNaissance']!=null){
@@ -72,7 +72,9 @@ include "Header.php";
                             $verif=0;
                         }
                     }
-                    echo('<div class="profil-trouvé">');
+                    echo('<form action="MonProfil.php" method="post">');
+                    echo('<input type="hidden" name="username" value="'.$prof['username'].'">');
+                    echo('<button type="submit" class="profil-trouvé">');
                     echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" height="200">');
                     echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
                     echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
@@ -82,7 +84,8 @@ include "Header.php";
                     echo("<p><u> Ville:</u> ".$prof['ville']."</p>");
                     echo("<p><u> Pays:</u> ".$prof['pays']."</p>");
                     echo("<p><u> Compatibilité:</u> ".calculateCompatibility($user['distance'])."%</p>");
-                    echo("</div>");
+                    echo('</button>');
+                    echo('</form>');
                 }
                 echo("</div>");
             ?>

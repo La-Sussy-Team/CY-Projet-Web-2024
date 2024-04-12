@@ -57,7 +57,7 @@ include "Header.php";
 <p>   +   </p>
 </div>
 <div class="result">
-<table class="table">
+    <table class="table">
     <?php
         include 'BackEnd/LoginDatabase.php';
         $nom=null;
@@ -137,29 +137,30 @@ include "Header.php";
                     $today = new DateTime('today');
                     $age = $birthdate->diff($today)->y;
                     if($agemin>$age || $agemax<$age ){
-                        
                         $verif=0;
                     }
                 }
-                
                 if($verif==1){
-                echo('<div class="profil-trouvé">');
-                echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" height="200">');
-                echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
-                echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
-                if($prof['dateNaissance']!=null){
-                echo("<p><u> Age:</u> ".$age." ans</p>");
-                }
-                echo("<p>".$prof['ville']."</p>");
-                echo("<p>".$prof['pays']."</p>");
-                echo("</div>");
+                    echo('<form action="MonProfil.php" method="post">');
+                    echo('<input type="hidden" name="username" value="'.$prof['username'].'">');
+                    echo('<button type="submit" class="profil-trouvé">');
+                    echo('<img src="../../Assets/Client/ProfileImage/'.$prof["imgpath"].'"class="profil-img" width="200" height="200">');
+                    echo("<b><p>".$prof['prenom']." ".$prof['nom']."</p></b>");
+                    echo("<p><u> Genre:</u> ".$prof['sexe']."</p>");
+                    if($prof['dateNaissance']!=null){
+                        echo("<p><u> Age:</u> ".$age." ans</p>");
+                    }
+                    echo("<p>".$prof['ville']."</p>");
+                    echo("<p>".$prof['pays']."</p>");
+                    echo('</button>');
+                    echo('</form>');
                 }
             }
             }
                 ?>
                 </div>
-                </div>
-</table>
+            </div>
+    </table>
 </div>
 </body>
 </html>
