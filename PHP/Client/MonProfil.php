@@ -19,6 +19,18 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     $user = $result->fetch_assoc();
 }
 
+if ($stmt = $con->prepare('SELECT * FROM login WHERE username = ?')) {
+    $stmt->bind_param('s', $_SESSION['username']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $session = $result->fetch_assoc();
+}
+if ($_SESSION['username'] != $username) {
+    if ($stmt = $con->prepare('INSERT INTO estconsulter (utilisateur_id, autre_utilisateur_id) VALUES (?, ?)')) {
+        $stmt->bind_param('ii', $session['id'], $login['id']);
+        $stmt->execute();
+    }
+}
 
 $other_user_isSub = 0;
 if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
