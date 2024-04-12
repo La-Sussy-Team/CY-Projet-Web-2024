@@ -72,6 +72,8 @@ include "Header.php";
                         <input type="hidden" name="username" value="' . $username . '">
                         <button type="submit">Créer la conversation</button>
                     </form>';
+                } else {
+                    echo '<p>Vous et votre destinataire devez être abonné pour pouvoir créer une conversation</p>';
                 }
                 ?>
                 </form>
