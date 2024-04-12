@@ -36,13 +36,15 @@ include "Header.php";
             </div>
             <div class="profile-info">
                 <div class="identity">
-                    <p><?php echo ($user['prenom']." ".$user['nom']); ?></p>
+                    <h3><?php echo ($user['prenom']." ".$user['nom']); ?></h3>
                 </div>
                 <div class="info">
                     <p>Tel: <?php echo $user['phone']; ?></p>
                     <p>Sexe: <?php echo $user['sexe']; ?></p>
                     <p>Pays: <?php echo $user['pays']; ?></p>
                     <p>Ville: <?php echo $user['ville']; ?></p>
+                    <p>Ville: <?php echo $user['ville']; ?></p>
+
                 </div>
             </div>
         </div>
@@ -63,9 +65,9 @@ include "Header.php";
             </div>
         </div>
             <form action="Deconnexion.php" method="POST">
-                <button type="submit">Logout</button>
+                <!--<button type="submit">Logout</button>-->
             </form>
-            <a href="ModifierProfil.php">Modifier mon profil</a>
+           <!-- <a href="ModifierProfil.php">Modifier mon profil</a>-->
         </div>
     </div>
 </body>

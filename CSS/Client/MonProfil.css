@@ -7,97 +7,89 @@ body {
 
 .profile-container {
     width: 800px;
-    height: 800px;
-    display: flex;
+    height: 1000px;
     justify-content: center;
-    align-items: center;
     margin: auto;
+    border: #333;
+    border-style: solid;
     
 }
 
 .profile-top{
-    border: black;
+    width: 100%;
+    height: 40%;
+    border: red;
     border-style: solid;
-    border-radius: 10px;
-    position: absolute;
-    width: 800px;
-    height: 350px;
-    top: 80px;
+    display: flex;
+    
+
 }
 
 .profile-mid{
-    position: absolute;
-    width: 800px;
-    height: 210px;
-    bottom: 425px;
-    border-left: black;
-    border-right: black;
+    width:100%;
+    height:30%;
+    bottom:40%;
+    border: blue;
     border-style: solid;
-    border-radius: 10px;
 }
 
 .profile-bot{
-    border: black;
+    width:100%;
+    height:28.5%;
+    bottom:70%;
+    border: green;
     border-style: solid;
-    border-radius: 10px;
-    position: absolute;
-    width: 800px;
-    height: 270px;
-    bottom: 155px;
+    display: flex;
 }
 
 .profile-pic{
-    height: 350px;
-    padding-left: 50px;
-    width: 250px;
-    position:absolute;
-    border-right: black;
-    border-right-style: solid;
-    border-radius: 10px;
+    width: 40%;
+    height:100%;
+    border: purple;
+    border-style: solid;
+}
+
+.profile-info {
+    right: 40%;
+    width: 59%;
+    height:99%;
+    border: pink;
+    border-style: solid;
+}
+.identity{
+    width: 99%;
+    height:20%;
+    border: rgb(182, 252, 19);
+    border-style: solid;
+}
+
+.info{
+    width: 99%;
+    height:78%;
+    border: rgb(49, 22, 123);
+    border-style: solid;
+
+ 
 }
 
 .profile-container img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-top: 20px;
-    margin-right: 20px;
+    margin-top: 15%;
+    margin-left: 18%;
 }
 
 .contact-button{
-    width: 50px;
-    height: 50px;
-    position: relative;
-    padding-left: 150px;
-    margin-top: 30px;
-    margin-left: 25px;
+    width: 35%;
+    height: 10%;
+    margin-left: 32%;
+    margin-top: 16%;
 }
 
-.profile-info {
-    width: 500px;
-    padding-bottom: 140px;
-    border-radius: 10px;
-    margin-left: 300px;
-    position: absolute;
-}
 
-.identity{
-    border-bottom: black;
-    border-bottom-style: solid;
-    border-radius: 10px;
-    text-align: center;
-    position: absolute;
-    width: 500px;
-    height: 50px;
-}
 
-.info{
-    position: absolute;
-    top: 50px;
-    width: 500px;
-    height: 300px;
- 
-}
+
 
 .profile-info h2 {
     margin-top: 0;
@@ -110,28 +102,27 @@ body {
 }
 
 .desc-plant{
-    width: 500px;
-    height: 295px;
-    position: absolute;
-    
+    border: #e00808;
+    border-style: solid;
+    width: 59%;
+    height:99%;
 }
 .id-plant{
-    position: absolute;
-    left: 500px;
-    width: 300px;
-    height: 270px;
-    
+    border: #08e008;
+    border-style: solid;
+    width: 39%;
+    height:99%;
 }
 .nom-plant{
-    position: absolute;
-    width: 300px;
-    height: 50px;
-    text-align: center;
+    width: 99%;
+    height:20%;
+    border: rgb(182, 252, 19);
+    border-style: solid;
 }
 
 .img-plant{
-    position: absolute;
-    top:50px;
-    width: 300px;
-    height: 250px;
+    width: 99%;
+    height:78%;
+    border: rgb(49, 22, 123);
+    border-style: solid;
 }
