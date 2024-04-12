@@ -92,16 +92,7 @@ if ($stmt) {
     <?php else : ?>
         <p>Aucune conversation disponible.</p>
     <?php endif; ?>
-</div>  
-    <div class="nouvelle-conversation">
-        <h2>Nouvelle Conversation</h2>
-        <form method="POST" action="create_conversation.php">
-            <input type="hidden" name="username2" value="<?php echo $username; ?>">
-            <label for="username">Nom de l'utilisateur destinataire :</label><br>
-            <input type="text" id="username" name="username" required><br>
-            <button type="submit">Créer la conversation</button>
-        </form>
-    </div>
+</div>
 </div>
 </body>
 </html>

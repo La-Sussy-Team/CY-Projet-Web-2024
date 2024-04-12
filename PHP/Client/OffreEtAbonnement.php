@@ -1,3 +1,6 @@
+<?php
+include "./BackEnd/VerificationConnexion.php"
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,18 +12,15 @@
     <script>
         function confirmerAbonnement() {
             if (confirm("Êtes-vous sûr de vouloir vous abonner ?")) {
-                // Envoi d'une requête AJAX pour mettre à jour le statut d'abonnement
                 $.ajax({
                     url: 'MajStatutAbo.php',
                     type: 'POST',
                     data: { abonnement: 'abonne' },
                     success: function(response) {
-                        // Si la mise à jour réussit, afficher un message de confirmation
                         alert("Vous êtes maintenant abonné !");
                         window.location.href = "./AccueilProfils.php";
                     },
                     error: function(xhr, status, error) {
-                        // En cas d'erreur, afficher un message d'erreur
                         alert("Une erreur s'est produite lors de la mise à jour de votre statut d'abonnement.");
                     }
                 });
@@ -29,10 +29,9 @@
     </script>
 </head>
 <?php
-        include "Header.php";
-    ?>
+    include "Header.php";
+?>
 <body>
-
     <div class="container">
         <div class="box1">
             <div class="int">

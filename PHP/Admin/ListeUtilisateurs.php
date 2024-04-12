@@ -13,7 +13,7 @@ if ($stmt = $con->prepare('SELECT * FROM login INNER JOIN infopersos ON login.id
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>Personalytree - Administration</title>
+    <title>PersonalyTree - Administration</title>
     <link rel="stylesheet" href="../../CSS/Admin/ListeUtilisateurs.css">
 </head>
 <?php

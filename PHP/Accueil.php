@@ -20,7 +20,11 @@ session_start();
                 echo '<li><a class="plusG" href="./Client/AccueilProfils.php">Accueil Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/RechercheProfils.php">Recherche de Profils</a></li>';
                 echo '<li><a class="plusG" href="./Client/Recommendation.php">Recommendations de Profils</a></li>';
-                echo '<li><a class="plusG" href="./Client/Conversation.php">Messagerie</a></li>';
+                if (isset($_SESSION['isSub']) && $_SESSION['isSub'] == 1 && isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
+                    echo '<li><a class="plusG" href="./Client/Conversation.php">Messagerie</a></li>';
+                } else if (isset($_SESSION['isBanned']) && $_SESSION['isBanned'] == 0) {
+                    echo '<li><a class="plusG" href="./Client/OffreEtAbonnement.php">Abonnement</a></li>';
+                }
             } else {
                 echo '<li><a class="plusG" href="./Accueil.php">Accueil</a></li>';
             }
@@ -43,7 +47,7 @@ session_start();
         <div class="titredivtop">
             <img class="logotop" src="../Assets/Logo/Logo_Fullscreen.png" alt="">
             <h2 class="titre-mid">PersonalyTree : Rencontre par affinité naturelle</h2>
-            <h2 class="titre-mid2">Trouvez l'amour grâce aux plantes</h2>
+            <h2 class="titre-mid2">Trouver l'amour grâce aux plantes</h2>
         </div>
         <div class="image-grid">
             <div class="image-container">

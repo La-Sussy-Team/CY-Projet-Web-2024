@@ -23,14 +23,14 @@ if (!isset($_POST['q1']) || !isset($_POST['q2']) || !isset($_POST['q3']) || !iss
     $plantes = array(
         "Broméliacées " => array("x" => 0, "y" => 0),
         "Chlorophytum " => array("x" => 1, "y" => 2),
-        "Cactus " => array("x" => 3, "y" => -1),
+        "Cactus " => array("x" => 3, "y" => 2),
         "Lierre" => array("x" => 6, "y" => 3),
         "Orchidée" => array("x" => 2, "y" => 5),
-        "Lavande" => array("x" => -1, "y" => 7),
-        "Oiseau de paradis" => array("x" => -4, "y" => 4),
-        "Pothos" => array("x" => -2, "y" => 1),
-        "Dracaena citron" => array("x" => -5, "y" => 0),
-        "Olivier" => array("x" => -7, "y" => 2),
+        "Lavande" => array("x" => 0, "y" => 3),
+        "Oiseau de paradis" => array("x" => 1, "y" => 3),
+        "Pothos" => array("x" => 0, "y" => 1),
+        "Dracaena citron" => array("x" => 2, "y" => 2),
+        "Olivier" => array("x" => 1, "y" => 5),
         "Tradescantia" => array("x" => 3, "y" => 3),
     );
     $reponses = array(
