@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" href="../CSS/Client/PageAccueil.css">
     <link rel="stylesheet" href="../CSS/Header.css">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Rencontre par affinité naturelle</title>
+    <title>PersonalyTree - Rencontre par affinité naturelle</title>
 </head>
 <body>
 <header>
