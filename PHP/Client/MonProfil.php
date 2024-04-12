@@ -70,7 +70,7 @@ include "Header.php";
                     <form method="POST" action="create_conversation.php">
                         <input type="hidden" name="username2" value="' . $_SESSION['username'] . '">
                         <input type="hidden" name="username" value="' . $username . '">
-                        <button type="submit" style="margin-left:27%;">Créer la conversation</button>
+                        <button type="submit" style="margin-left:29%;">Créer la conversation</button>
                     </form>';
                 } else {
                     echo '<p>Vous et votre destinataire devez être abonné pour pouvoir créer une conversation</p>';
