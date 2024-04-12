@@ -34,7 +34,7 @@ if ($stmt) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>Personalytree - Conversations</title>
+    <title>PersonalyTree - Conversations</title>
     <link rel="stylesheet" href="../../CSS/Client/Conversations.css">
 </head>
 <?php
