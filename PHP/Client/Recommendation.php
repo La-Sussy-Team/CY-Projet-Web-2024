@@ -21,7 +21,7 @@ function calculateCompatibility($distance) {
     <link rel="stylesheet" href="../../CSS/Client/RechercheProfils.css">
     <link rel="stylesheet" href="../../CSS/Client/StylesCommuns.css">
     <link rel="icon" href="../../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Rencontre par affinité naturelle</title>
+    <title>PersonalyTree - Rencontre par affinité naturelle</title>
 </head>
 <?php
 include "Header.php";
