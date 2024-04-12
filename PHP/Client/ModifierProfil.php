@@ -21,7 +21,7 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../Assets/Logo/Logo_Fullscreen.png" type="img/png">
-    <title>PersonaliTree - Modification Profil</title>
+    <title>PersonalyTree - Modification Profil</title>
     <link rel="stylesheet" href="../../CSS/Client/ModifierProfil.css">
     <link rel="stylesheet" href="../../CSS/Client/Inscription.css">
     <script src="../../JS/Librairies/jquery-3.7.1.min.js"></script>
