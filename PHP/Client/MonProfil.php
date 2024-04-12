@@ -13,8 +13,11 @@ if ($stmt = $con->prepare('SELECT * FROM infopersos WHERE user_id = ?')) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 }
-
-$username = $_POST['username'];
+if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+} else {
+    $username = $_SESSION['username'];
+}
 
 $other_user_isSub = 0;
 if ($stmt = $con->prepare('SELECT isSub FROM login WHERE username = ?')) {
