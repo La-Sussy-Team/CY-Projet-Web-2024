@@ -63,18 +63,18 @@ include "Header.php";
             <div class="profile-pic">
                 <img id="profilePic" src="../../Assets/Client/ProfileImage/<?php echo $user['imgpath']?>">
                 <?php
-                if ($_SESSION['isSub'] != 0 && $other_user_isSub!=0) {
+                if ($_SESSION['username'] == $username) {
+                    echo '<a href="ModifierProfil.php">Modifier mon profil</a>';
+                } else if ($_SESSION['isSub'] != 0 && $other_user_isSub!=0) {
                 echo '
                     <form method="POST" action="create_conversation.php">
                         <input type="hidden" name="username2" value="' . $_SESSION['username'] . '">
                         <input type="hidden" name="username" value="' . $username . '">
                         <button type="submit">Créer la conversation</button>
-                    </form>
-                ';
+                    </form>';
                 }
                 ?>
                 </form>
-                ?>
             </div>
             <div class="profile-info">
                 <div class="identity">
@@ -87,29 +87,26 @@ include "Header.php";
                     <p><u>Pays:</u> <?php echo $user['pays']; ?></p>
                     <p><u>Ville:</u> <?php echo $user['ville']; ?></p>
                     <p><u>Centre d'intérets:</u> <?php echo str_replace("~"," - ",$user['interets']); ?></p>
-
                 </div>
             </div>
         </div>
         <div class="profile-mid">
-        <u><h1 style="text-align: center;">Description</h1></u>
-            <p><?php echo $user['bio']; ?></p>
+            <u><h1 style="text-align: center;">Description</h1></u>
+            <p style="word-wrap: anywhere;"><?php echo $user['bio']; ?></p>
         </div>
         <div class="profile-bot">
             <div class="desc-plant">
-                <p> <?php echo($plante['desciption']) ?></p>            </div>
+                <p> <?php echo($plante['description']) ?></p>
+            </div>
             <div class="id-plant">
                 <div class="nom-plant">
-                <h2 style="text-align: center;"><?php echo($plante['plante']) ?></h2>                </div>
+                    <h2 style="text-align: center;"><?php echo($plante['plante']) ?></h2>
+                </div>
                 <div class="img-plant">
-                <?php echo("<img src='../../Assets/Client/Plante/".$plante['plante']."'>"); ?>
+                    <?php echo("<img src='../../Assets/Client/Plante/".$plante['imgpath']."'>"); ?>
                 </div>
             </div>
         </div>
-            <form action="Deconnexion.php" method="POST">
-                <!--<button type="submit">Logout</button>-->
-            </form>
-           <!-- <a href="ModifierProfil.php">Modifier mon profil</a>-->
         </div>
     </div>
 </body>
