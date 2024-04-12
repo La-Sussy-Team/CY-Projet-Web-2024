@@ -46,7 +46,9 @@ include "Header.php";
                 while ($row = mysqli_fetch_assoc($result)) {
                     if ($row['x'] != null && $row['y'] != null){
                         $distance = sqrt(pow($row['x'] - $current_user_x, 2) + pow($row['y'] - $current_user_y, 2));
-                        $distances[] = array('id' => $row['id'], 'distance' => $distance);
+                        if ($distance != 0){
+                            $distances[] = array('id' => $row['id'], 'distance' => $distance);
+                        }
                     }
                 }
                 usort($distances, function($a, $b) {
